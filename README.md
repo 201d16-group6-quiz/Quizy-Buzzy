@@ -15,7 +15,7 @@ website to create and take quizzes
 
 ## What is Quizy-Buzzy?
 
-It's a quiz generating and taking website with and interactive pages to create your own quiz and share it with other users  
+It's a quiz generating and taking website with an interactive pages to create your own quiz and share it with other users  
 
 **The website has these pages :**
 
