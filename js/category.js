@@ -7,18 +7,6 @@ let quiz ;
 let id = localStorage.getItem('id'); 
 
 
-//  give the category page css properties depending on type of quizzes
-function setCssStyle(){
-
- for (let i = 0; i < arrCategory.length; i++) {
-        if (id ===arrCategory[i]) {    
-            root.style.setProperty('--color',arrColors[i]);
-            root.style.setProperty('--background', arrBackground[i]);
-            break;
-        }
-    }
-}
-setCssStyle();
 
 // this function will take the quiz ID and send the user to the quiz page
 table.addEventListener('click',goToQuiz);
@@ -58,6 +46,20 @@ loadJSON('Quiz.json',
         },
          function(xhr) { console.error(xhr); }
 );
+
+
+//  give the category page css properties depending on type of quizzes
+function setCssStyle(){
+
+    for (let i = 0; i < arrCategory.length; i++) {
+           if (id ===arrCategory[i]) {    
+               root.style.setProperty('--color',arrColors[i]);
+               root.style.setProperty('--background', arrBackground[i]);
+               break;
+           }
+       }
+   }
+   setCssStyle();
 
 //  insert all the quizzes objects in an array 
 let arrObjectToArray = [];
@@ -100,7 +102,6 @@ for (let i = 0; i < arrCategory.length; i++) {
 
     
     //  work after the page load so the the json file function will work first and assign the value to "quiz"
-     window.onload = function() { 
-        generateQuizzesTable();
-        
+    window.onload = function() { 
+        setTimeout(function(){  generateQuizzesTable(); }, 500);
     };
