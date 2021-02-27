@@ -20,13 +20,8 @@ for (let i = 0; i < arrQuiz.arrSimpleMathQuestions.length; i++) {
         quizSection.appendChild(olEl);
         let start = 0;
         let end =0;
-        if (i === 0) {
-            end = 4;
-        }
-        else{
-            start = i*4;
-            end = (i*4)+4;
-        }
+        start = i*4;
+        end = start+4;
     for (let y = start; y < end; y++) {
         liEl = document.createElement('li');
         olEl.appendChild(liEl);
@@ -76,27 +71,20 @@ let index = parseInt(currentUl.id);
 // showing results 
 buttonEl.addEventListener("click",showResults) 
 function showResults(){
-debugger;
     let rightAnswer = quizSection.querySelectorAll("li");
     let selectedAnswer = quizSection.querySelectorAll(".selected");
 
  for (let i = 0; i <arrQuiz.arrSimpleAnswers.length; i++) {
     let start = 0;
     let end =0;
-    if (i === 0) {
-        end = 4;
-    }
-    else{
         start = i*4;
-        end = (i*4)+4;
-    }
+        end = start+4;
 for (let y = start; y < end; y++) {
     if (rightAnswer[y].textContent === arrQuiz.arrSimpleAnswers[i]) {
         console.log(rightAnswer[y]);
     rightAnswer[y].style.backgroundColor = "green";
     if (selectedAnswer[i].textContent !== arrQuiz.arrSimpleAnswers[i]) {
         selectedAnswer[i].style.backgroundColor = "red";
-        rightAnswer[y].style.backgroundColor = "green";
         selectedAnswer[i].style.color = "black";
     }
     else{

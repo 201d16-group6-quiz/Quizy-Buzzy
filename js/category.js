@@ -1,8 +1,8 @@
 let arrCategory = ['math','science','programming','fun','languages','geography']
 let arrColors = ['red', 'blue','green','black','orange','yellow'];
-let arrBackground = ['lightblue','orange','yellow','red', 'blue','green','black'];
+let arrBackground = ['lightblue','orange','yellow','red', 'blue','green'];
 let root = document.querySelector(':root');
-let table = document.getElementsByTagName('table')[0];
+let table = document.getElementById('category');
 let quiz ;
 let id = localStorage.getItem('id'); 
 
@@ -61,21 +61,25 @@ loadJSON('Quiz.json',
 
 //  insert all the quizzes objects in an array 
 let arrObjectToArray = [];
-
+let arrNewQuiz =[];
 function makeQuizzesList(){
-    arrObjectToArray.push(quiz.math[0]);
-    arrObjectToArray.push(quiz.math[1]);
+    debugger;
+    for (let i = 0; i < quiz.length; i++) {
+        arrObjectToArray.push(quiz[i]);
+        
+    }
 }
+
 
 // generate the quizzes category  from json file depending on the type user chose
 function generateQuizzesTable(){
-     debugger;
     makeQuizzesList(); 
+    debugger;
 for (let i = 0; i < arrCategory.length; i++) {
     if (arrCategory[i] === id) {
     let trEl = document.createElement('tr');
     let tdEl = document.createElement('td');
-     for (let y = 0; y < quiz.math.length; y++) {
+     for (let y = 0; y < quiz.length; y++) {
          if (arrObjectToArray[y].category === id) {
        trEl = document.createElement('tr');
        table.appendChild(trEl);
