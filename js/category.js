@@ -98,7 +98,7 @@ for (let i = 0; i < arrCategory.length; i++) {
     
  }
 
-    
+   
     //  work after the page load so the the json file function will work first and assign the value to "quiz"
      window.onload = function() { 
         generateQuizzesTable();
