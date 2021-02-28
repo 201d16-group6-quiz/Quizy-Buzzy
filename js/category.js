@@ -1,4 +1,4 @@
-let arrCategory = ['math','science','programming','fun','languages','geography']
+let arrCategory = ['math','science','programming','fun','languages','geography'];
 let arrColors = ['red', 'blue','green','black','orange','yellow'];
 let arrBackground = ['lightblue','orange','yellow','red', 'blue','green'];
 let root = document.querySelector(':root');
