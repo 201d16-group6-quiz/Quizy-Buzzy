@@ -224,12 +224,30 @@ list-style: none;
       list-style: none;
     }
     
+    .socials{
+      display: inline-flex;
+      justify-content: space-around;
+      width: 30%;
+      
+    }
+    .socials li{
+      list-style: none;
+    }
+    .socials a{
+      color: rgba(248, 192, 128, 0.781);
+      text-decoration: none;
+      letter-spacing: 2px;
+      font-weight: bold;
+      font-size: 15px;
+
+    }
+    
     footer {
       height: 250px;
-      background-color: rgb(81 76 76);
+      background-color: rgba(26, 25, 26, 0.678);
+      text-align: center;
+      color: rgba(250, 244, 250, 0.527);
     
-      
-     
     }
     
     
