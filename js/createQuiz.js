@@ -2,7 +2,12 @@
 const quizSection = document.getElementById('createQuiz');
 const FORM = document.getElementById('quizForm');
 let questionContainer = document.createElement('div');
-let noOFChoices =4;
+let choiceBtnsContainer = document.createElement('div');
+let INPUT= document.createElement('input');
+let brk = document.createElement('br');
+let ulEl = document.createElement('ul');
+let liEl = document.createElement('li');
+let noOFChoices =2;
 let counter=0;
 let arrCategory = ['math','science','programming','fun','languages','geography']; //edit later
 
@@ -16,50 +21,141 @@ Quiz.all.push(this);
 Quiz.all=[];
 
 let quiz = new Quiz
-//generate input fields and radio fields and assign a shared class for each corresponding input and radio field
-Quiz.prototype.generatefields = function (){
-    counter++;
-    questionContainer = document.createElement('div');
-    let brk = document.createElement('br');
-    questionContainer.className='newQuestion'
-    let INPUT= document.createElement('input');
-    FORM.appendChild(questionContainer);
-    questionContainer.appendChild(INPUT);
-    questionContainer.appendChild(brk);
 
-    
-    INPUT.placeholder='your question';
-    INPUT.setAttribute('required','');
 
-    for(let i=0; i<noOFChoices; i++){   
-        INPUT= document.createElement('input');
-        questionContainer.appendChild(INPUT);
-        INPUT.type='radio';
-        INPUT.setAttribute('required','');
-        INPUT.className=`Q${counter}inpt${i}`;
-        INPUT.name=`right${counter}`
-        INPUT= document.createElement('input');
-        questionContainer.appendChild(INPUT);
-        INPUT.placeholder=`choice ${i+1}`;
-        INPUT.className=`Q${counter}inpt${i}`;
-        INPUT.setAttribute('required','');
-        brk = document.createElement('br');
-        questionContainer.appendChild(brk);
-    }
+
+Quiz.prototype.generateQuestionfield = function (){
 
     createNewQuestion();
+ 
+    //create a button to add a new question
+    addQuestionBtn = document.createElement('button');
+    quizSection.appendChild(addQuestionBtn);
+    addQuestionBtn.textContent='+ new Question';
+
+    addQuestionBtn.addEventListener('click',createNewQuestion);
+    //FORM.addEventListener('click',removeQuestion); 
+
+}
+
+// generate choices inputs
+Quiz.prototype.addChoice = function (ulEl){
+
+    let i;
+    console.log(ulEl)
+    if(ulEl.childNodes){ //if it has childs
+     i = ulEl.childNodes.length;
+    }else{
+        i = 0;
+    }
+    if(i<10){
+    liEl = document.createElement('li');
+    ulEl.appendChild(liEl);
+
+    //new input 
+    INPUT= document.createElement('input');
+    liEl.appendChild(INPUT);
+    // input type radio to specify the right answer
+    INPUT.type='radio';
+    INPUT.className=`Q${counter}inpt${i}`;//edit
+    INPUT.name=`right${counter}`;
+
+    //new choice input 
+    INPUT= document.createElement('input');
+    liEl.appendChild(INPUT);
+    INPUT.placeholder=`choice ${i+1}`;
+    INPUT.className=`Q${counter}inpt${i}`;
+    }else{
+        alert('no more than 10 options')
+    }
+    
+}
+
+Quiz.prototype.removeChoice = function (ulEl){
+
+    if(ulEl.childNodes.length>2){
+        ulEl.lastElementChild.remove();      
+        noOFChoices--;
+    }
 }
 
 // holds a button that creates a new question when clicked, it is called by the object method generatefields
 // each time to update the position of the button
 function createNewQuestion(){
-    const newQuestionbutton = document.createElement('button');
-    questionContainer.appendChild(newQuestionbutton);
-    newQuestionbutton.textContent='+';
-    newQuestionbutton.onclick = function(){
-        newQuestionbutton.remove();
-        quiz.generatefields();
+    counter++;
+    
+        //create the question and choices container
+        questionContainer = document.createElement('div');
+        FORM.appendChild(questionContainer);
+        questionContainer.className='newQuestion';
+        questionContainer.id=`question${counter}`;
+        questionContainer.draggable='true'
+    
+        //create question input field
+        INPUT= document.createElement('input');
+        questionContainer.appendChild(INPUT);
+        INPUT.placeholder='your question';
+    
+        // creates a break between the questions and the fields
+        brk = document.createElement('br');
+        questionContainer.appendChild(brk);
+
+        ulEl = document.createElement('ul');
+        questionContainer.appendChild(ulEl);
+    // create two choices by default
+    for(let i=0; i<noOFChoices; i++){  
+        quiz.addChoice(ulEl);
         }
+
+    //create a container for the addChoiceBtn and removeChoiceBtn
+    choiceBtnsContainer = document.createElement('div');
+    questionContainer.appendChild(choiceBtnsContainer);
+    choiceBtnsContainer.id=`choiceBtnsContainer`;
+
+    //create button to add a single choice field
+    addChoiceBtn = document.createElement('button');
+    choiceBtnsContainer.appendChild(addChoiceBtn);
+    addChoiceBtn.textContent='+';
+
+    //creates a button to remove a single choice field
+    removeChoiceBtn = document.createElement('button');
+    choiceBtnsContainer.appendChild(removeChoiceBtn);
+    removeChoiceBtn.textContent='-';
+
+    //onclick calls addchoice function to add a choice field
+    addChoiceBtn.onclick = function(event){
+        let parentQId =  event.target.parentElement.parentElement.id;
+        let parentQ = document.getElementById(parentQId);
+        ulEl = parentQ.querySelector('ul');
+        quiz.addChoice(ulEl);
+        noOFChoices++;
+
+        console.log(event.target.parentElement.parentElement.id);
+    }
+
+    //onclick calls addchoice function to add a choice field
+    removeChoiceBtn.onclick = function(event){    
+        let parentQId =  event.target.parentElement.parentElement.id;
+        let parentQ = document.getElementById(parentQId); 
+        ulEl = parentQ.querySelector('ul');
+        quiz.removeChoice(ulEl);
+    }
+     
+           
+}
+
+function removeQuestion(){
+    let lastQuestion = FORM.lastElementChild;
+    const removeQuestionbutton = document.createElement('button');
+    lastQuestion.appendChild(removeQuestionbutton);
+    removeQuestionbutton.textContent='-';
+    removeQuestionbutton.onclick = function(){       
+        lastQuestion.remove();
+        counter--;
+        createNewQuestion();
+        removeLastQuestion();
+    }
+    
 }
 
 //event listener on the create quiz input 
@@ -82,16 +178,30 @@ function getValuesandCreateQuiz(event){
         }
     }
     }
+   // formValidate();
+    saveToLocalStorage();
     FORM.reset();
 }
 
 const SELECT = document.createElement('select');
+const LABEL = document.createElement('Label');
 
 //rendering the select category and its options
 function chooseCategory (){
+    SELECT.id='select';
+    quizSection.appendChild(LABEL);
+    LABEL.for='select';
+    LABEL.textContent='Category: '
     quizSection.appendChild(SELECT);
+    let option = document.createElement('option');
+    option.value='none';
+    option.setAttribute('selected','');
+    option.setAttribute('disabled','');
+    option.setAttribute('hidden','');
+    option.textContent='Select a Category';
+    SELECT.appendChild(option);
     for (let i = 0; i < arrCategory.length; i++) {
-        let option = document.createElement('option');
+         option = document.createElement('option');
         SELECT.appendChild(option);
         option.textContent=option.value = arrCategory[i];
     }
@@ -101,8 +211,34 @@ function updateCategorySelection(){
     quiz.category=SELECT.value;
 }
 
+function formValidate(){
+    
+    let invalid = document.querySelector('input:invalid');
 
+    invalid.style.setProperty('background-color',rgba(255, 0, 0, 0.479));
+     
+}
+
+function saveToLocalStorage(){
+    localStorage.setItem('questionsArr',JSON.stringify(quiz.questionsArr));
+    localStorage.setItem('choicesArr',JSON.stringify(quiz.choicesArr));
+    localStorage.setItem('answersArr',JSON.stringify(quiz.answersArr));
+    localStorage.setItem('category',JSON.stringify(quiz.category));
+
+    //goToQuizesPage();
+}
+
+//go to a page to see his quiz
+function goToQuizesPage(){
+    window.location.href = "../quiz.html";
+
+}
+ 
 
 chooseCategory();
-quiz.generatefields();
+quiz.generateQuestionfield();
+
+
+
+//-----------------------------------episode two: draggable form ----------------------------------------
 

@@ -1,4 +1,7 @@
+*{
+    border: blue 2px hidden;
 
+}
 
 body{
     max-width: 960px;
@@ -9,6 +12,9 @@ body{
 input{
     margin: 5px;
 }
+input:invalid{
+    
+}
 .newQuestion > :first-child{
     width: 250px;
 }  
@@ -16,12 +22,17 @@ input{
     margin-top: 30px;
     background-color: blanchedalmond;
     box-sizing: border-box;
+    border: blue 2px solid;
+    position: relative;
+
 }
 form > :first-child{
 width: 100px;
 height: 40px;
-position: fixed;
-right: 50px;
+position: sticky;
+position: -webkit-sticky;
+top: 20px;
+
 }
 form{
     margin-top: 50px;
@@ -34,3 +45,35 @@ button{
 select{
     margin: 10px 0;
 }
+#choiceBtnsContainer{
+    display: inline-block;
+    position: absolute;
+    right: 30%;
+    bottom: 2%;
+}
+#choiceBtnsContainer button{
+    border-radius: 50% ;
+    height: 20px;
+    width: 20px;
+    margin-right: 5px;
+    background-color: coral;
+    opacity: 0.3;
+}
+
+#choiceBtnsContainer button:hover{
+    opacity: 1;
+}
+#choiceBtnsContainer button:focus{
+    outline: none;
+}
+ul,li{
+    display:block;
+}
+.hide {
+    display: none;
+}
+.drag-over {
+    border: dashed 3px coral;
+}
+
+
