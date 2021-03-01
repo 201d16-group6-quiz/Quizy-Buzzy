@@ -13,7 +13,7 @@ ul img{
       margin-left: 0px;
     }
         
-    p{
+    main p{
         color: rgb(9, 6, 79);
         font-family:"Orbitron", sans-serif;
         font-size: 20px;
@@ -21,7 +21,7 @@ ul img{
         margin-left: 10px;
     }
 
-    h4{
+    main h4{
         color: rgb(9, 6, 79);
         font-family:"Orbitron", sans-serif; 
         font-size: 20px;
@@ -42,4 +42,4 @@ ul img{
         /* font-weight: bold; */
         font-family:"Orbitron", sans-serif; 
     }
-  
+    
