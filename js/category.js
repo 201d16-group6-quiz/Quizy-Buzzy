@@ -1,8 +1,9 @@
 let arrCategory = ['math','science','programming','fun','languages','geography']
 let arrColors = ['red', 'blue','green','black','orange','yellow'];
-let arrBackground = ['lightblue','orange','yellow','red', 'blue','green'];
+let arrBackground = ['url(../img/mathimages.jpg)','url(../img/scienceimage.jpg)','url(../img/prog.jpg)','url(../img/funimage.jpg', 'url(../img/langu.jpg)','url(../img/geograpghyimage.jpg'];
 let root = document.querySelector(':root');
 let table = document.getElementById('category');
+table.className="tableCategory";
 let quiz ;
 let id = localStorage.getItem('id'); 
 
@@ -52,7 +53,8 @@ loadJSON('Quiz.json',
 function setCssStyle(){
 
     for (let i = 0; i < arrCategory.length; i++) {
-           if (id ===arrCategory[i]) {    
+           if (id ===arrCategory[i]) { 
+
                root.style.setProperty('--color',arrColors[i]);
                root.style.setProperty('--background', arrBackground[i]);
                break;
@@ -76,6 +78,7 @@ function makeQuizzesList(){
 // generate the quizzes category  from json file depending on the type user chose
 function generateQuizzesTable(){
     makeQuizzesList(); 
+    
     debugger;
 for (let i = 0; i < arrCategory.length; i++) {
     if (arrCategory[i] === id) {
@@ -84,6 +87,7 @@ for (let i = 0; i < arrCategory.length; i++) {
      for (let y = 0; y < quiz.length; y++) {
          if (arrObjectToArray[y].category === id) {
        trEl = document.createElement('tr');
+       trEl.className="trCategory";
        table.appendChild(trEl);
        tdEl = document.createElement('td');
        trEl.appendChild(tdEl);

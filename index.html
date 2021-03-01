@@ -1,51 +1,84 @@
 <!DOCTYPE html>
-<html lang="en">
+<html >
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Quizy Buzzy</title>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Luckiest+Guy&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Slab:ital,wght@1,500&family=Orbitron:wght@600&display=swap" rel="stylesheet"> 
+    <!-- <link rel="stylesheet" href="./css/reset.css"> -->
     <link rel="stylesheet" href="./css/Style.css">
-    <title>QUIZY BUZZY</title>
+
 </head>
 <body>
-   <header>
-       <section class="nav"><nav></nav></section>
-       <section class="second-header"><div ></div></section>
-   </header>
-<main>
-<section class='main-section'>
-    <div id="about-us">
+    <header >
+        <nav>
+            <div class="logo">
+                <h2 id="fh">Quizy Buzzy</h2>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#">Home</a> </li>
+                <li><a href="#">Categories</a> </li>
+                <li><a href="#">About us</a> </li>
+                <li><a href="#">Profile</a> </li>
+            </ul>
+        </nav>
 
-</div>
+    </header>
+    <main>
+        <section>
 
-
-<div >
-
- <table id='category'>
-    <tr>
-        <td ><a id="math" href="./category.html"> math</a></td>
-        <td><a  id="science" href="./category.html">science</a></td>
-        <td ><a  id="programming" href="./category.html">programming</a></td>
-    </tr>
-    <tr>
-        <td ><a id="fun" href="./category.html">fun</a></td>
-        <td ><a  id="languages" href="./category.html">languages</a></td>
-        <td ><a  id="geography" href="./category.html">geography</a></td>
-    </tr>
- </table>
+        <!-- <img class="main-img" src="./img/home-img.png"  alt="main img"> -->
+        </section>
 
 
-</div>
+        <section id = "category">
+            <ul id="img2-ul"> 
+                <li><img class="img2-li" src="./img/test1.jpg"></li>
+                <li><p id="lorem">Welcome to our website
+                    <br>
+                    <br>
+                    Here you have the chance to be creative and create your OWN quiz
+                    <br>
+                    <br>
+                    Keep scrolling down and choose the prefered categorie.</p>
+                </li>
+            </ul>
+        </section>
 
-</section>
-
-</main>
-<footer>
-    <section class="footer">
-<div ></div>
-
-    </section>
-</footer>
+        <section id = 'categoryContainer'> 
+            <h3> Categories</h3>
+           
+            <ul>
+                <div class="cont1">
+                       
+                   <div class="container"  >   <li><img id="math" src="./img/math-elements.jpg"  /> <div>
+                        
+                      </div></li> 
+                    </div>
+                   
+                      <li ><img id="languages" src="./img/people-languages.jpg" /></li>
+                      <li ><img id="science" src="./img/scientific-research.jpg"  /></li>
+                    </div>
+                </ul>
+                <ul>
+                    <div class="cont2"> 
+                      <li ><img id="programming" src="./img/coding.jpg" /></li>
+                      <li ><img id="fun" src="./img/fun.jpg" /></li>
+                      <li ><img id="geography" src="./img/geography-5512.jpg" /></li> 
+                    </div>
+                </ul>
+            
+        </section> 
+    </main>
+    <footer > 
+    
+    
+    </footer>
     <script src="./js/App.js"></script>
 </body>
-</html> 
+</html>
+
+
