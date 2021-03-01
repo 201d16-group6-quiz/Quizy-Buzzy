@@ -89,7 +89,7 @@ function createNewQuestion(){
         FORM.appendChild(questionContainer);
         questionContainer.className='newQuestion';
         questionContainer.id=`question${counter}`;
-        questionContainer.draggable='true'
+        //questionContainer.draggable='true'
     
         //create question input field
         INPUT= document.createElement('input');
@@ -140,28 +140,37 @@ function createNewQuestion(){
         ulEl = parentQ.querySelector('ul');
         quiz.removeChoice(ulEl);
     }
-     
-           
+
+    let dragBtn = document.createElement('button');
+    questionContainer.appendChild(dragBtn);
+    dragBtn.textContent='drag';
+    dragBtn.id='dragBtn';
+    dragBtn.draggable='true';
+
+    makeDraggable(dragBtn,questionContainer);
+
+    let removeQuestionbutton = document.createElement('button');
+    questionContainer.appendChild(removeQuestionbutton);
+    dragBtn.textContent='x';
+    dragBtn.id='removeQuestionbutton';
+    removeQuestionbutton.onclick = function(event){
+        removeQuestion(event.target.parentElement.id);
+    }
+
+    
+
 }
 
-function removeQuestion(){
-    let lastQuestion = FORM.lastElementChild;
-    const removeQuestionbutton = document.createElement('button');
-    lastQuestion.appendChild(removeQuestionbutton);
-    removeQuestionbutton.textContent='-';
-    removeQuestionbutton.onclick = function(){       
-        lastQuestion.remove();
-        counter--;
-        createNewQuestion();
-        removeLastQuestion();
-    }
-    
+function removeQuestion(qId){
+    document.getElementById(qId).removeChild();
+
 }
 
 //event listener on the create quiz input 
-FORM.addEventListener('submit',getValuesandCreateQuiz)
+document.getElementById('submit').addEventListener('submit',getValuesandCreateQuiz)
 // takes the values from the form and push them to the quiz object array
 function getValuesandCreateQuiz(event){
+    console.log(event.target)
     updateCategorySelection();
     event.preventDefault();
     for(let i=0; i<counter; i++){
@@ -178,7 +187,7 @@ function getValuesandCreateQuiz(event){
         }
     }
     }
-   // formValidate();
+    formValidate();
     saveToLocalStorage();
     FORM.reset();
 }
@@ -215,7 +224,7 @@ function formValidate(){
     
     let invalid = document.querySelector('input:invalid');
 
-    invalid.style.setProperty('background-color',rgba(255, 0, 0, 0.479));
+    invalid.style.setProperty('background-color',rgba(255, 0, 0, 0.479))
      
 }
 
@@ -225,7 +234,7 @@ function saveToLocalStorage(){
     localStorage.setItem('answersArr',JSON.stringify(quiz.answersArr));
     localStorage.setItem('category',JSON.stringify(quiz.category));
 
-    //goToQuizesPage();
+    goToQuizesPage();
 }
 
 //go to a page to see his quiz
@@ -242,3 +251,64 @@ quiz.generateQuestionfield();
 
 //-----------------------------------episode two: draggable form ----------------------------------------
 
+function makeDraggable(dragBtn,questionContainer){
+        
+        dragBtn.addEventListener('dragstart', dragStart);
+        dragBtn.addEventListener('dragend', dragend);
+    
+        questionContainer.addEventListener('dragenter', dragEnter);
+        questionContainer.addEventListener('dragleave', dragLeave);
+        questionContainer.addEventListener('dragover', dragOver);
+        questionContainer.addEventListener('drop', drop);
+        
+        function dragStart(e) {
+            console.log('drag starts...',e.target.parentElement.id);
+            e.dataTransfer.setData('text/plain', e.target.parentElement.id);
+            
+        
+            setTimeout(() => {
+                e.target.parentElement.classList.add('partiallyHide');
+            }, 0);
+        }
+    
+        function dragend(e){
+            //display the draggable element again
+            e.target.parentElement.classList.remove('partiallyHide');
+            console.log('drag end...',e.target)
+    
+        }
+        
+        
+        function dragEnter(e) {
+            e.preventDefault();
+            e.target.classList.add('drag-over');
+            console.log('drag enter...',e.target)
+    
+        }
+        
+        function dragOver(e) {
+            e.preventDefault();
+            e.target.classList.add('drag-over');
+            console.log('drag over...')
+        }
+        
+        function dragLeave(e) {
+            e.target.classList.remove('drag-over');
+            console.log('drag leave...')
+    
+        }
+        
+        function drop(e) {
+            e.target.classList.remove('drag-over');
+            console.log('drop...')
+    
+            // get the draggable element
+            const id = e.dataTransfer.getData('text/plain');
+            const draggable = document.getElementById(id);
+    
+            // add it to the drop target
+            e.target.insertAdjacentElement("afterend", draggable);
+        
+        }
+
+}
