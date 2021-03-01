@@ -179,42 +179,42 @@ list-style: none;
       font-family: "Orbitron", sans-serif;
     }
     
-    #math img:hover{
+    #math:hover{
       z-index: -1;
      opacity: 0.5;
      cursor: pointer;
     transition: 0.5s;
     }
     
-    #lang img:hover{
+    #languages:hover{
       z-index: -1;
      opacity: 0.5;
      cursor: pointer;
     transition: 0.5s;
     }
     
-    #sci img:hover{
+    #science:hover{
       z-index: -1;
      opacity: 0.5;
      cursor: pointer;
     transition: 0.5s;
     }
     
-    #fun img:hover{
+    #fun:hover{
       z-index: -1;
      opacity: 0.5;
      cursor: pointer;
     transition: 0.5s;
     }
     
-    #prog img:hover{
+    #programming:hover{
       z-index: -1;
      opacity: 0.5;
      cursor: pointer;
     transition: 0.5s;
     }
     
-    #geog img:hover{
+    #geography:hover{
       z-index: -1;
      opacity: 0.5;
      cursor: pointer;
