@@ -58,8 +58,7 @@
     
     header {
     
-      background-color: #e72e68
-      ;
+      background-color: #e72e68;
     
     }
     
@@ -129,9 +128,13 @@
       font-size: 17px;
     }
     
-    .nav-links a:hover {
-      color: #ffeead;
+    .nav-links button:hover {
+      color: #5bc5dd;
     }
+    .nav-links a:hover {
+      color: #5bc5dd;
+    }
+
     
     /* main img style */
     
@@ -154,7 +157,7 @@ list-style: none;
     }
     .img2-li {
       width: 400px;
-      margin-left: 100px;
+      margin-left: 280px;
       margin-bottom: 50px;
       list-style: none;
       margin-top: 4%;

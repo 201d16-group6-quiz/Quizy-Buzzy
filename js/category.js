@@ -1,6 +1,6 @@
 let arrCategory = ['math','science','programming','fun','languages','geography'];
 let arrColors = ['red', 'blue','green','black','orange','yellow'];
-let arrBackground = ['url(../img/math16.png)','url(../img/scienceimage.jpg)','url(../img/Programming5.png)','url(../img/photo6.jpg', 'url(../img/langu.jpg)','url(../img/geography2.jpg'];
+let arrBackground = ['url(../img/math22.jpg)','url(../img/science.jpg)','url(../img/Programming6.jpeg)','url(../img/photo6.jpg', 'url(../img/languages.png)','url(../img/world-map.png'];
 let root = document.querySelector(':root');
 let table = document.getElementById('category');
 table.className="tableCategory";
