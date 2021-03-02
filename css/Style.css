@@ -54,22 +54,19 @@
     
     header {
     
-      background-image: url('../img/pic.jpg');
+      background-color: rgba(26, 25, 26, 0.678);
     
     }
     
     main{
-      background-image: url('../img/pic.jpg');
-      background-size: cover;                     
-      background-repeat:   no-repeat;
-      background-position: center center;
+     
       padding-bottom: 5%;
       border-bottom: 10px solid rgb(255, 255, 255);
     }
     
   
     main>section:first-of-type{
-      background-image: url('../img/home-page-size.png');
+      background-image: url('../img/quizz.jpg');
     background-size: cover;
     height: 700px;
     
