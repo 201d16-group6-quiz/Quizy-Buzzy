@@ -60,6 +60,7 @@ Quiz.prototype.addChoice = function (ulEl,idOfQ){
     INPUT.type='radio';
     INPUT.className=`${idOfQ}Inpt${i}`;
     INPUT.name=`radioOf${idOfQ}`;
+    INPUT.setAttribute('required','');
 
     //new choice input 
     INPUT= document.createElement('input');
@@ -192,17 +193,16 @@ FORM.addEventListener('submit',formValidate)
         const CURRENTQUESTION= qList[i];
         quiz.questionsArr.push(CURRENTQUESTION.firstChild.value);
         console.log(quiz.questionsArr)
-
-        for(let j=1;j<CURRENTQUESTION.querySelector('ul').childNodes.length;j++) {
-
-           if(CURRENTQUESTION.childNodes[j].hasAttribute('placeholder')){
-            quiz.choicesArr.push(CURRENTQUESTION.childNodes[j].value);
-            console.log(quiz.choicesArr)
-            if(CURRENTQUESTION.childNodes[j].previousSibling.getAttribute('type')=='radio' && CURRENTQUESTION.childNodes[j].previousSibling.checked){
-                quiz.answersArr.push(CURRENTQUESTION.childNodes[j].value);  
+    let choiceList= CURRENTQUESTION.querySelector('ul').childNodes;  //li elements as choices
+        for(let j=0;j<choiceList.length;j++) {
+            // the input choice is the last of each li element
+            quiz.choicesArr.push(choiceList[j].lastElementChild.value);
+            console.log(quiz.choicesArr);
+            if(choiceList[j].firstChild.checked){ // the input radio is the first of each li element
+                quiz.answersArr.push(choiceList[j].lastElementChild.value);  
                 console.log(quiz.answersArr)              
             }
-        }
+        
     }
     }    
             saveToLocalStorage();
@@ -257,22 +257,8 @@ function updateCategorySelection(){
         }
      }
      if(success){
-         let letsSee = 0;
-        for(let i=0; i<allInputs.length;i++){
-            if(allInputs[i].type === 'radio' && !allInputs[i].hasAttribute('required')){
-                allInputs[i].setAttribute('required','');
-                letsSee++;
-            }
-        }
-        if(letsSee === 0){
             getValuesandCreateQuiz();
-        }else{
-            let errMsg = document.createElement('p');
-            errMsg.textContent='please select the right answers';
-            errMsg.style.color='red';
-            quizSection.appendChild(errMsg);
         }
-    }
      
 }
 
