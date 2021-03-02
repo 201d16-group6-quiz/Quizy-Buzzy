@@ -1,10 +1,84 @@
-li:hover{
+.modal  li:hover{
     cursor: pointer;
+    
 }
 
-li{
+.modal  li{
 height: 50px;
 border: black solid 2px;
 margin: 1%;
-display: inline-block;
+display: block;
+tab-size: 2;
+line-height: 2.6;
+padding-left: 20px;
+font-size: large;
+font-weight: 400;
+}
+
+.modal ol{
+    margin: 2%;
+    list-style-type: lower-latin;
+}
+li{
+    list-style-type: lower-latin;
+    
+        }
+.modal {
+    /* display: none; Hidden by default */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    background-color: #c1c1c140;
+    padding-top: 50px;
+  }
+  
+  .modal button{
+    margin: 3% 30%;
+    width: 40%;
+    height: 39px;
+    background-color: #bfbcbc;
+    color: azure;
+    font-size: x-large;
+    padding: 2% 0 5%;
+  }
+
+  .modal button:hover{
+background-color: lightgreen;
+cursor: pointer;
+  }
+  /* Modal Content/Box */
+  #quiz  {
+    background-color: #fefefe;
+    margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+    border: 1px solid #888;
+    width: 70%; /* Could be more or less, depending on screen size */
+  }
+
+  #quiz p a{
+    color:rgb(19, 54, 90);
+    }
+
+    #quiz {
+        padding: 16px;
+        margin: 0 auto;
+        width: 960px;
+      }
+      main>section:first-of-type {
+        background-image: none;
+          
+      background-size: auto;
+     height: auto;
+    }
+nav{
+    margin-bottom: 1%;
+}
+
+section p{
+    height: auto;
+    width: auto;
+    text-align: center;
+   margin: 0 auto;
+    color: black;
+    font-size: 28px;
 }
