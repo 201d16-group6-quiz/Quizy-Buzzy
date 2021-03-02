@@ -5,12 +5,14 @@ let liEl = document.createElement('li');
 let olEl = document.createElement('ol');
 let arrAnswers = ['','','','',''];
 let points = 0;
-
-
+let arrOrder = ['a-','b-','c-','d-'];
+const Q$NUMBER = 4;
 // show quiz question on the page
 function generateQuizQuestion(){
 
 let h3El = document.createElement('h3');
+let hrEl = document.createElement('hr');
+
 for (let i = 0; i < arrQuiz.arrSimpleMathQuestions.length; i++) {
     h3El = document.createElement('h3');
     quizSection.appendChild(h3El);
@@ -18,17 +20,25 @@ for (let i = 0; i < arrQuiz.arrSimpleMathQuestions.length; i++) {
     olEl = document.createElement('ol');
     olEl.id = i;
         quizSection.appendChild(olEl);
+        hrEl = document.createElement('hr');
+        olEl.appendChild(hrEl);
         let start = 0;
         let end =0;
-        start = i*4;
-        end = start+4;
+        start = i*Q$NUMBER;
+        end = start+Q$NUMBER;
+        let countOrder = 0;
     for (let y = start; y < end; y++) {
+
         liEl = document.createElement('li');
         olEl.appendChild(liEl);
-        liEl.textContent = arrQuiz.arrSimpleMathChoices[y];
+        liEl.textContent =arrQuiz.arrSimpleMathChoices[y];
+        liEl.style.backgroundColor = 'whitesmoke';
         liEl.id = y;
         
+        
     }
+
+
 }
 buttonEl = document.createElement('button');
 buttonEl.textContent = 'submit';
@@ -42,17 +52,19 @@ generateQuizQuestion();
 quizSection.addEventListener('click',addAnswer);
 
 function addAnswer(event){
+
     if(event.target.tagName.toLowerCase() === 'li'){
     console.log(event.target);
- 
-    event.target.style.color = "#F00";
+ debugger;
+    event.target.style.backgroundColor = "#b7cad0";
     let currentUl =  event.target.parentNode;
     let allLi = currentUl.children;
     for (let i = 0; i < allLi.length; i++) {
   
     if (allLi[i].className === 'selected') {
         allLi[i].classList.remove("selected");
-        allLi[i].style.color = "black";
+        allLi[i].style.backgroundColor = "whitesmoke";
+        break;
         
     }  
 }
@@ -71,21 +83,32 @@ let index = parseInt(currentUl.id);
 // showing results 
 buttonEl.addEventListener("click",showResults) 
 function showResults(){
+
     let rightAnswer = quizSection.querySelectorAll("li");
     let selectedAnswer = quizSection.querySelectorAll(".selected");
-
  for (let i = 0; i <arrQuiz.arrSimpleAnswers.length; i++) {
     let start = 0;
     let end =0;
-        start = i*4;
-        end = start+4;
+        start = i*Q$NUMBER;
+        end = start+Q$NUMBER;
 for (let y = start; y < end; y++) {
     if (rightAnswer[y].textContent === arrQuiz.arrSimpleAnswers[i]) {
         console.log(rightAnswer[y]);
-    rightAnswer[y].style.backgroundColor = "green";
-    if (selectedAnswer[i].textContent !== arrQuiz.arrSimpleAnswers[i]) {
-        selectedAnswer[i].style.backgroundColor = "red";
-        selectedAnswer[i].style.color = "black";
+    rightAnswer[y].style.border = '3px solid limegreen';
+    rightAnswer[y].style.color = 'limegreen';
+    rightAnswer[y].style.backgroundColor = 'rgba(215, 248, 215, 0.787)';
+    
+
+    if (selectedAnswer[i] === undefined || selectedAnswer[i].textContent !== arrQuiz.arrSimpleAnswers[i]) {
+        if ( selectedAnswer[i] !== undefined) {
+            selectedAnswer[i].style.border = " 3px solid red";
+            selectedAnswer[i].style.color = "red";
+            selectedAnswer[i].style.backgroundColor = '#8b000038';
+            
+            
+            
+        }
+
     }
     else{
         points ++;
@@ -95,5 +118,12 @@ for (let y = start; y < end; y++) {
   }
   let pEl = document.createElement('p');
   quizSection.appendChild(pEl);
-  pEl.textContent = `good job ! you got ${points} out of 5`;
+if (points >=3) {
+    pEl.textContent = `good job ! you got ${points} out of 5`;
+}
+else {
+    pEl.textContent = `hard luck ! you got ${points} out of 5`;
+}
+ 
+  buttonEl.disabled = true;
 }

@@ -1,45 +1,78 @@
 ul img{
     height: 250px;
     width:250px;
-    margin-left: 550px;
+    display: block;
+    /* margin-left: 550px; */
     padding: 15px;
 }
 
   
   
     h3{
-        font-size:40px;  
-      margin-right: 0px;
-      margin-left: 0px;
+        font-size: 40px;
+        margin: 32px auto;
+        justify-content: center;
+        display: flex;
     }
-        
+
+    main{
+        margin-top: 10px;
+    }
+
     main p{
         color: rgb(9, 6, 79);
-        font-family:"Orbitron", sans-serif;
+        font-family: 'Playfair Display', serif;
         font-size: 20px;
-        line-height: 1.3;
+        line-height: 1.6;
         margin-left: 10px;
+        font-weight: 700;
     }
 
     main h4{
         color: rgb(9, 6, 79);
-        font-family:"Orbitron", sans-serif; 
+        font-family: 'Playfair Display', serif;
         font-size: 20px;
         letter-spacing: 2px;
         margin-left: 5px;
     }
     #line{
-        margin-top: 10px;
-      border-bottom: 10px solid rgb(250, 250, 250);
-      display: flex;
+    display: flex; 
+    font-family: 'Playfair Display', serif;
+    padding-top: 5%;
+    font-size: xx-large;
+    justify-content: center;
     }
    
+
+    #lineContainer{
+        width: 1200px;
+        margin: 0px auto;
+        text-align: center;
+        border: white solid 9px;
+        padding-bottom: inherit;
+
+    }
     
     ul li{
         font-size: 15px;
         color:rgb(9, 6, 79);
-        text-align: center;
-        /* font-weight: bold; */
+        /* text-align: center; */
         font-family:"Orbitron", sans-serif; 
+        display: block;
+        line-height: 1.6;
+        margin-left: 9%;
     }
     
+    ul{
+    width: 25%;
+    display: inline;
+    }
+
+    #teamContainer{
+        width: 100%;
+    }
+
+    .collection{
+        display: inline-block;
+        margin: 3% 3% 3%;
+    }

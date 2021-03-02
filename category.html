@@ -6,21 +6,49 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/Style.css">
     <link rel="stylesheet" href="./css/category.css">
+    <link rel="stylesheet" href="./css/user.css">
     <title>Category</title>
 </head>
 <body id="change-background">
-    <header>
+    <header >
         <nav>
             <div class="logo">
                 <h2 id="fh">Quizy Buzzy</h2>
             </div>
             <ul class="nav-links">
-                <li><a href="#">Home</a> </li>
-                <li><a href="#">Categories</a> </li>
-                <li><a href="#">About us</a> </li>
-                <li><a href="#">Profile</a> </li>
+                <button class="dropbtn"> <a href="./index.html">Home</a></button>
+                
+              
+                
+              
+               
+               
+               
+               
+                <div class="dropdown">
+                    <button class="dropbtn">Categories</button>
+                    <div class="dropdown-content" id="redirectToCategory">
+                      <a id="math" href="#">Math</a>
+                      <a id="science" href="#">Science</a>
+                      <a id="languages" href="#">Language</a>
+                      <a id="fun" href="#">Fun</a>
+                      <a id="geography" href="#">Geography</a>
+                      <a id="programming" href="#">Programming</a>
+                      
+                    </div>
+                  </div>
+            
+            
+            
+            
+            
+            
+            
+                  <button class="dropbtn"><a href="./aboutus.html">About us</a></button>
+                  <button class="dropbtn">profile</button>
             </ul>
         </nav>
+
     </header>
     <main>
         <section id = "sectionTable"></section>
@@ -30,7 +58,33 @@
 </table>
 </section>
     </main>
-    <footer></footer>
+    <footer > 
+        <br>
+       <div class="footer-content">
+           <h4>QUIZY BUZZY</h4>
+           
+           <p>Create your own quiz and discover more quizzes that you can solve</p> 
+           <br>
+           <p>CONTACT US</p>
+           <br>
+            <ul class="socials">
+                <li><a href="https://www.facebook.com/" >Facebook</i></a></li>
+                <li><a href="https://www.instagram.com/" >instagram</a></li>
+                <li><a href="https://www.linkedin.com/feed/" >linkedin</a></li>
+                <li><a href="https://twitter.com/" >twitter</a></li>
+    
+            </ul>
+       </div>
+       <br>
+       <div class="footer-bottom">
+           <p>copyright &copy;2021 Quizy Buzzy designd by <span>Group6</span> </p>
+
+       </div>
+    
+    
+    </footer>
+    <span id="categoryContainer"></span>
+    <script src="./js/App.js"></script>
     <script src="./js/category.js"></script>
 </body>
 </html>
