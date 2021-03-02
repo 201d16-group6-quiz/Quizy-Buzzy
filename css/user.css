@@ -31,6 +31,21 @@ button:hover {
   opacity:1;
 }
 
+#error{
+  color: #f44336;
+}
+
+#show{
+  display: none;
+    margin: 29%;
+    text-align: center;
+    font-size: x-large;
+}
+#redirectToHome{
+background-color: #f5aa47;
+margin-top: 11%;
+}
+
 /* Extra styles for the cancel button */
 .cancelbtn {
   padding: 14px 20px;
@@ -70,7 +85,7 @@ button:hover {
 /* Style the horizontal ruler */
 hr {
   border: 1px solid #f1f1f1;
-  margin-bottom: 25px;
+  margin: 25px;
 }
 
 /* The Close Button (x) */
@@ -128,4 +143,24 @@ form .container{
 
 .container p a{
 color:rgb(19, 54, 90);
+}
+
+
+.vl {
+  height: 500px;
+  margin: 0 25%;
+}
+
+.h1Sign,.h1Sign2,.h1Sign1{
+  display: inline;
+}
+
+.h1Sign2:hover ,.h1Sign1:hover{
+  text-decoration: underline;
+color: rgb(54, 54, 216);
+}
+
+#pSign{
+  font-size: inherit;
+  display: inline;
 }

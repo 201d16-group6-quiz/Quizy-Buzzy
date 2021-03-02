@@ -1,0 +1,19 @@
+{
+  "name": "quizy-buzzy",
+  "version": "1.0.0",
+  "description": "website to create and take quizzes",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Quizy-Buzzy/Quizy-Buzzy.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Quizy-Buzzy/Quizy-Buzzy/issues"
+  },
+  "homepage": "https://github.com/Quizy-Buzzy/Quizy-Buzzy#readme"
+}
