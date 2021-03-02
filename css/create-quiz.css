@@ -1,28 +1,37 @@
 *{
     border: blue 2px hidden;
     outline: none;
-    
+    font-size: 18px;
 
 }
 
-body{
-    max-width: 960px;
+
+main{
+    /*max-width: 960px;*/
     margin: 0 auto;
-    border: solid 2px black;
+    border: solid 1px rgb(255, 255, 255);
     text-align: center;
+    /*later edit*/
+
 } 
+main>section:first-of-type {
+    background-image: none;
+
+}
+
 input{
     margin: 5px;
+    border: 2px solid coral;
+    border-radius: 10px;
+    padding: 5px;
 }
-input:invalid{
-    
-}
+
 .newQuestion > :first-child{
-    width: 250px;
+    width: 400px;
 }  
 .newQuestion{
     margin-top: 30px;
-    background-color: blanchedalmond;
+    background-color: rgb(255, 255, 255);
     box-sizing: border-box;
     position: relative;
 
@@ -42,9 +51,19 @@ form{
 button{
     margin: 20px 0;
     cursor: pointer;
+    border-radius: 10px;
+    background-color: white;
+    border: thin coral solid;
+    cursor: pointer;
+    padding: 5px;
+
 } 
 select{
-    margin: 10px 0;
+    margin: 10px ;
+    padding: 5px;
+    border-radius: 10px;
+    background-color: white;
+    border: thin coral solid;
 }
 #choiceBtnsContainer{
     display: inline-block;
@@ -79,7 +98,32 @@ opacity: 0.2;
 #dragBtn{
     position: absolute;
     left: 1%;
-    top: 0%;
+    top: 10%;
+    width: 25px;
+
 }
+#submit{
+    width: 150px;
+    border-radius: 10px;
+    background-color: white;
+    border: thin coral solid;
+    cursor: pointer;
+}
+
+#removeQuestionbutton{
+    border: none;
+    color: white;
+    position: absolute;
+    width: 30px;
+    right: 5%;
+    top: 0%;
+    font-size: 20px;
+    background-color: coral;
+}
+
+select:hover,button:hover{
+    opacity: 0.8;
+}
+
 
 

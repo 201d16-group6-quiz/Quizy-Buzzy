@@ -150,12 +150,14 @@ function createNewQuestion(){
         quiz.removeChoice(ulEl);
     }
 
-    let dragBtn = document.createElement('button');
+    let dragBtn = document.createElement('img');
     questionContainer.appendChild(dragBtn);
-    dragBtn.textContent='drag';
+    dragBtn.src='../img/drag.png';
+//    dragBtn.textContent='drag';
     dragBtn.id='dragBtn';
     dragBtn.draggable='true';
-    dragBtn.type='button';
+  //  dragBtn.type='button';
+
 
     makeDraggable(dragBtn,questionContainer);
 
