@@ -32,6 +32,7 @@ Quiz.prototype.generateQuestionfield = function (){
     addQuestionBtn = document.createElement('button');
     quizSection.appendChild(addQuestionBtn);
     addQuestionBtn.textContent='+ new Question';
+    addQuestionBtn.type='button';
 
     addQuestionBtn.addEventListener('click',createNewQuestion);
     //FORM.addEventListener('click',removeQuestion); 
@@ -39,12 +40,12 @@ Quiz.prototype.generateQuestionfield = function (){
 }
 
 // generate choices inputs
-Quiz.prototype.addChoice = function (ulEl){
+Quiz.prototype.addChoice = function (ulEl,idOfQ){
 
     let i;
     console.log(ulEl)
     if(ulEl.childNodes){ //if it has childs
-     i = ulEl.childNodes.length;
+     i = ulEl.childNodes.length; //take the length of those childs to continue counting the number of choices
     }else{
         i = 0;
     }
@@ -57,14 +58,14 @@ Quiz.prototype.addChoice = function (ulEl){
     liEl.appendChild(INPUT);
     // input type radio to specify the right answer
     INPUT.type='radio';
-    INPUT.className=`Q${counter}inpt${i}`;//edit
-    INPUT.name=`right${counter}`;
+    INPUT.className=`${idOfQ}Inpt${i}`;
+    INPUT.name=`radioOf${idOfQ}`;
 
     //new choice input 
     INPUT= document.createElement('input');
     liEl.appendChild(INPUT);
     INPUT.placeholder=`choice ${i+1}`;
-    INPUT.className=`Q${counter}inpt${i}`;
+    INPUT.className=`${idOfQ}Inpt${i}`;
     }else{
         alert('no more than 10 options')
     }
@@ -83,13 +84,19 @@ Quiz.prototype.removeChoice = function (ulEl){
 // each time to update the position of the button
 function createNewQuestion(){
     counter++;
-    
+
         //create the question and choices container
         questionContainer = document.createElement('div');
         FORM.appendChild(questionContainer);
         questionContainer.className='newQuestion';
         questionContainer.id=`question${counter}`;
-        //questionContainer.draggable='true'
+
+        //the next question takes the previous question's number of choices, and if it is the first one the default would be two 
+        if( questionContainer.previousElementSibling && questionContainer.previousElementSibling.childNodes.length){
+            noOFChoices = questionContainer.previousElementSibling.querySelector('ul').childNodes.length;
+            }else{
+                noOFChoices = 2;
+            } 
     
         //create question input field
         INPUT= document.createElement('input');
@@ -104,7 +111,7 @@ function createNewQuestion(){
         questionContainer.appendChild(ulEl);
     // create two choices by default
     for(let i=0; i<noOFChoices; i++){  
-        quiz.addChoice(ulEl);
+        quiz.addChoice(ulEl,questionContainer.id);
         }
 
     //create a container for the addChoiceBtn and removeChoiceBtn
@@ -116,18 +123,20 @@ function createNewQuestion(){
     addChoiceBtn = document.createElement('button');
     choiceBtnsContainer.appendChild(addChoiceBtn);
     addChoiceBtn.textContent='+';
+    addChoiceBtn.type='button';
 
     //creates a button to remove a single choice field
     removeChoiceBtn = document.createElement('button');
     choiceBtnsContainer.appendChild(removeChoiceBtn);
     removeChoiceBtn.textContent='-';
+    removeChoiceBtn.type='button'
 
     //onclick calls addchoice function to add a choice field
     addChoiceBtn.onclick = function(event){
         let parentQId =  event.target.parentElement.parentElement.id;
         let parentQ = document.getElementById(parentQId);
         ulEl = parentQ.querySelector('ul');
-        quiz.addChoice(ulEl);
+        quiz.addChoice(ulEl,parentQId);
         noOFChoices++;
 
         console.log(event.target.parentElement.parentElement.id);
@@ -146,13 +155,15 @@ function createNewQuestion(){
     dragBtn.textContent='drag';
     dragBtn.id='dragBtn';
     dragBtn.draggable='true';
+    dragBtn.type='button';
 
     makeDraggable(dragBtn,questionContainer);
 
     let removeQuestionbutton = document.createElement('button');
     questionContainer.appendChild(removeQuestionbutton);
-    dragBtn.textContent='x';
-    dragBtn.id='removeQuestionbutton';
+    removeQuestionbutton.textContent='x';
+    removeQuestionbutton.id='removeQuestionbutton';
+    removeQuestionbutton.type='button'
     removeQuestionbutton.onclick = function(event){
         removeQuestion(event.target.parentElement.id);
     }
@@ -162,34 +173,38 @@ function createNewQuestion(){
 }
 
 function removeQuestion(qId){
-    document.getElementById(qId).removeChild();
-
+    if(qId !== FORM.querySelector('div').id ){ //if it is not the first question
+    document.getElementById(qId).remove();
+    }
 }
 
 //event listener on the create quiz input 
-document.getElementById('submit').addEventListener('submit',getValuesandCreateQuiz)
+FORM.addEventListener('submit',formValidate)
 // takes the values from the form and push them to the quiz object array
-function getValuesandCreateQuiz(event){
-    console.log(event.target)
+ function getValuesandCreateQuiz(){
     updateCategorySelection();
-    event.preventDefault();
-    for(let i=0; i<counter; i++){
-        const CURRENTQUESTION= FORM.getElementsByClassName('newQuestion')[i];
+    let qList= FORM.querySelectorAll('.newQuestion')
+    
+    // question value
+    for(let i=0; i<qList.length; i++){
+        const CURRENTQUESTION= qList[i];
         quiz.questionsArr.push(CURRENTQUESTION.firstChild.value);
+        console.log(quiz.questionsArr)
 
-        for(let j=1;j<CURRENTQUESTION.childNodes.length;j++) {
+        for(let j=1;j<CURRENTQUESTION.querySelector('ul').childNodes.length;j++) {
+
            if(CURRENTQUESTION.childNodes[j].hasAttribute('placeholder')){
             quiz.choicesArr.push(CURRENTQUESTION.childNodes[j].value);
+            console.log(quiz.choicesArr)
             if(CURRENTQUESTION.childNodes[j].previousSibling.getAttribute('type')=='radio' && CURRENTQUESTION.childNodes[j].previousSibling.checked){
-
-                quiz.answersArr.push(CURRENTQUESTION.childNodes[j].value);                
+                quiz.answersArr.push(CURRENTQUESTION.childNodes[j].value);  
+                console.log(quiz.answersArr)              
             }
         }
     }
-    }
-    formValidate();
-    saveToLocalStorage();
-    FORM.reset();
+    }    
+            saveToLocalStorage();
+            FORM.reset(); 
 }
 
 const SELECT = document.createElement('select');
@@ -220,11 +235,42 @@ function updateCategorySelection(){
     quiz.category=SELECT.value;
 }
 
-function formValidate(){
-    
-    let invalid = document.querySelector('input:invalid');
+ function formValidate(event){
+    event.preventDefault();
+    let success = true;
+     let allInputs = document.querySelectorAll('input');
+     console.log(allInputs);
+     for(let i=0; i<allInputs.length;i++){
+         if(allInputs[i].type != 'submit'){  
+         if(allInputs[i].value){
+                if(allInputs[i].style.backgroundColor){
+                    allInputs[i].style.backgroundColor='';
+                }
+            }else{
+                allInputs[i].style.setProperty('background-color','rgba(255, 0, 0, 0.479)');
+                success = false;
+                
+            }
 
-    invalid.style.setProperty('background-color',rgba(255, 0, 0, 0.479))
+        }
+     }
+     if(success){
+         let letsSee = 0;
+        for(let i=0; i<allInputs.length;i++){
+            if(allInputs[i].type === 'radio' && !allInputs[i].hasAttribute('required')){
+                allInputs[i].setAttribute('required','');
+                letsSee++;
+            }
+        }
+        if(letsSee === 0){
+            getValuesandCreateQuiz();
+        }else{
+            let errMsg = document.createElement('p');
+            errMsg.textContent='please select the right answers';
+            errMsg.style.color='red';
+            quizSection.appendChild(errMsg);
+        }
+    }
      
 }
 
@@ -239,9 +285,9 @@ function saveToLocalStorage(){
 
 //go to a page to see his quiz
 function goToQuizesPage(){
-    window.location.href = "../quiz.html";
+   //window.location.href = "../quiz.html";
 
-}
+} 
  
 
 chooseCategory();
@@ -281,25 +327,25 @@ function makeDraggable(dragBtn,questionContainer){
         
         function dragEnter(e) {
             e.preventDefault();
-            e.target.classList.add('drag-over');
+            e.currentTarget.classList.add('drag-over');
             console.log('drag enter...',e.target)
     
         }
         
         function dragOver(e) {
             e.preventDefault();
-            e.target.classList.add('drag-over');
+            e.currentTarget.classList.add('drag-over');
             console.log('drag over...')
         }
         
         function dragLeave(e) {
-            e.target.classList.remove('drag-over');
+            e.currentTarget.classList.remove('drag-over');
             console.log('drag leave...')
     
         }
         
         function drop(e) {
-            e.target.classList.remove('drag-over');
+            e.currentTarget.classList.remove('drag-over');
             console.log('drop...')
     
             // get the draggable element
@@ -307,7 +353,9 @@ function makeDraggable(dragBtn,questionContainer){
             const draggable = document.getElementById(id);
     
             // add it to the drop target
-            e.target.insertAdjacentElement("afterend", draggable);
+            e.currentTarget.insertAdjacentElement("afterend", draggable);
+
+            console.log('target..',e.target,'currentTarget',e.currentTarget);
         
         }
 
