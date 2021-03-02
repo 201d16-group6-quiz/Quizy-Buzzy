@@ -8,7 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Slab:ital,wght@1,500&family=Orbitron:wght@600&display=swap" rel="stylesheet"> 
-    <!-- <link rel="stylesheet" href="./css/reset.css"> -->
+    <link rel="stylesheet" href="./css/reset.css"> 
     <link rel="stylesheet" href="./css/Style.css">
 
 </head>
@@ -19,9 +19,9 @@
                 <h2 id="fh">Quizy Buzzy</h2>
             </div>
             <ul class="nav-links">
-                <button id="dropbtn1">Home</button>
+                <button class="dropbtn"> <a href="./index.html">Home</a></button>
                 
-                
+              
                 
               
                
@@ -30,13 +30,13 @@
                
                 <div class="dropdown">
                     <button class="dropbtn">Categories</button>
-                    <div class="dropdown-content">
-                      <a id="math" href="./category.html">Math</a>
-                      <a id="science" href="./category.html">Science</a>
-                      <a id="languages" href="./category.html">Language</a>
-                      <a id="fun" href="./category.html">Fun</a>
-                      <a id="geography" href="./category.html">Geography</a>
-                      <a id="programming" href="./category.html">Programming</a>
+                    <div class="dropdown-content" id="redirectToCategory">
+                      <a id="math" href="#">Math</a>
+                      <a id="science" href="#">Science</a>
+                      <a id="languages" href="#">Language</a>
+                      <a id="fun" href="#">Fun</a>
+                      <a id="geography" href="#">Geography</a>
+                      <a id="programming" href="#">Programming</a>
                       
                     </div>
                   </div>
@@ -47,8 +47,8 @@
             
             
             
-                  <button id="dropbtn3"><a href="./aboutus.html">About us</a></button>
-                  <button id="dropbtn4">profile</button>
+                  <button class="dropbtn"><a href="./aboutus.html">About us</a></button>
+                  <button class="dropbtn">profile</button>
             </ul>
         </nav>
 
@@ -69,7 +69,7 @@
                     Here you have the chance to be creative and create your OWN quiz
                     <br>
                     <br>
-                    Keep scrolling down and choose the prefered categorie.</p>
+                    Keep scrolling down to discover more quizzes that you can solve.</p>
                 </li>
             </ul>
         </section>
@@ -80,7 +80,7 @@
             <ul>
                 <div class="cont1">
                        
-                   <div class="container"  >   <li><img id="math" src="./img/math-elements.jpg"  /><h5>Math</h5> <div>
+                   <div class="container" >   <li><img id="math" src="./img/math-elements.jpg"  /><p id="mathi">Math</p> <div>
                         
                       </div></li> 
                     </div>
