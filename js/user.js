@@ -27,7 +27,7 @@ function showSignUp(event) {
 h1SignIn.addEventListener('click',showSignIn);
 
 function showSignIn(event) {
-   debugger;
+   
   event.preventDefault();
   btnShowSignUp.style.display ="none";
   btnShowSignIn.style.display = "block";
@@ -64,7 +64,7 @@ function redirectToHome(event){
       User.all.push(this);
    }
    getherUserInformation() {
-      debugger;
+      
       if (localStorage.getItem("userInfo") !== null) {
          User.all  = localStorage.getItem('userInfo');
          User.all = JSON.parse(User.all);
