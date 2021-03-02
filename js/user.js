@@ -1,3 +1,4 @@
+'use strict'
 let btnSignUp = document.getElementById('signup');
 let elements = document.getElementById("signUpForm").elements;
 const PASSWORD = document.getElementById("newPassword").elements;
@@ -6,15 +7,16 @@ const CONFIRM$PASSWORD = document.getElementById("newPassword").elements;
 
 
 
- function User(name,password,email,userQuizzes=[]) {
-    this.questionsArr = questionsArr;
-    this.choicesArr = choicesArr;
-    this.answersArr = answersArr;
+ function User(name,password,email,arrUserQuizzes=[]) {
+    this.arrUserQuizzes = arrUserQuizzes;
+    this.name = name;
+    this.password = password;
+    this.email = email;
     User.all.push(this);
     }
     User.all=[];
     
-    let quiz = new Quiz
+    let user = new User;
 
 
     btnSignUp.addEventListener('click',getherUserInformation);
@@ -27,20 +29,20 @@ const CONFIRM$PASSWORD = document.getElementById("newPassword").elements;
       let newEmail = document.getElementById('newEmail');
       if (PASSWORD !== CONFIRM$PASSWORD) {
          error.textContent = "The password doesn't match";
-         break;
+         return;
       }
       else {
          for (let i = 0; i < User.all.length; i++) {
            
             if (newUserName.value === User.all[i].name) {
                error.textContent = "The username is taken";
-               break;
+               return;
                
             }
 
            else if (newEmail.textContent === User.all[i].email) {
                error.textContent = "The email is used before";
-               break;
+               return;
             }
          }
       }
