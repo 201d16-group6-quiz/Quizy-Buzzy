@@ -5,6 +5,7 @@ let liEl = document.createElement('li');
 let olEl = document.createElement('ol');
 let arrAnswers = ['','','','',''];
 let points = 0;
+let players =0;
 let arrOrder = ['a-','b-','c-','d-'];
 const Q$NUMBER = 4;
 // show quiz question on the page
@@ -86,6 +87,7 @@ function showResults(){
 
     let rightAnswer = quizSection.querySelectorAll("li");
     let selectedAnswer = quizSection.querySelectorAll(".selected");
+   
  for (let i = 0; i <arrQuiz.arrSimpleAnswers.length; i++) {
     let start = 0;
     let end =0;
@@ -112,6 +114,7 @@ for (let y = start; y < end; y++) {
     }
     else{
         points ++;
+        
     }
 }  
 }
@@ -124,6 +127,8 @@ if (points >=3) {
 else {
     pEl.textContent = `hard luck ! you got ${points} out of 5`;
 }
- 
+ players ++;
   buttonEl.disabled = true;
+
 }
+
