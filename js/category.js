@@ -67,7 +67,6 @@ function setCssStyle(){
 let arrObjectToArray = [];
 let arrNewQuiz =[];
 function makeQuizzesList(){
-    debugger;
     for (let i = 0; i < quiz.length; i++) {
         arrObjectToArray.push(quiz[i]);
         
@@ -77,9 +76,9 @@ function makeQuizzesList(){
 
 // generate the quizzes category  from json file depending on the type user chose
 function generateQuizzesTable(){
+    renderNewQuiz();
     makeQuizzesList(); 
     
-    debugger;
 for (let i = 0; i < arrCategory.length; i++) {
     if (arrCategory[i] === id) {
     let trEl = document.createElement('tr');
@@ -111,3 +110,14 @@ for (let i = 0; i < arrCategory.length; i++) {
         setTimeout(function(){  generateQuizzesTable(); }, 500);
 
     };
+//-------------------------nizar code -------------------
+//sorry i could not add to json file and it is 3:21 am now!
+//I'll use my simple way of rendering using only localStorage
+
+
+function renderNewQuiz(){
+
+    let dataFromlocalStorage = JSON.parse(localStorage['quiz']);
+    console.log(dataFromlocalStorage)
+    arrObjectToArray.push(dataFromlocalStorage)
+}

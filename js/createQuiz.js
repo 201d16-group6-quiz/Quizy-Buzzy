@@ -13,6 +13,8 @@ let arrCategory = ['math','science','programming','fun','languages','geography']
 
 function Quiz(category='',questionsArr=[],choicesArr=[],answersArr=[]) {
 this.category = category;
+this.id=30;
+this.name='New user Quiz';
 this.questionsArr = questionsArr;
 this.choicesArr = choicesArr;
 this.answersArr = answersArr;
@@ -154,10 +156,8 @@ function createNewQuestion(){
     let dragBtn = document.createElement('img');
     questionContainer.appendChild(dragBtn);
     dragBtn.src='../img/drag.png';
-//    dragBtn.textContent='drag';
     dragBtn.id='dragBtn';
     dragBtn.draggable='true';
-  //  dragBtn.type='button';
 
 
     makeDraggable(dragBtn,questionContainer);
@@ -215,6 +215,7 @@ const LABEL = document.createElement('Label');
 //rendering the select category and its options
 function chooseCategory (){
     SELECT.id='select';
+    SELECT.setAttribute('required','');
     quizSection.appendChild(LABEL);
     LABEL.for='select';
     LABEL.textContent='Category: '
@@ -256,26 +257,57 @@ function updateCategorySelection(){
 
         }
      }
-     if(success){
+     
+     if(SELECT.value ==='none'){
+        SELECT.style.backgroundColor='rgba(255, 0, 0, 0.479)';
+     }
+     
+     if(success && SELECT.value !=='none'){
             getValuesandCreateQuiz();
         }
      
 }
 
 function saveToLocalStorage(){
-    localStorage.setItem('questionsArr',JSON.stringify(quiz.questionsArr));
-    localStorage.setItem('choicesArr',JSON.stringify(quiz.choicesArr));
-    localStorage.setItem('answersArr',JSON.stringify(quiz.answersArr));
-    localStorage.setItem('category',JSON.stringify(quiz.category));
+
+    localStorage.setItem('id',quiz.category);
+
+    localStorage.setItem('quiz',JSON.stringify(quiz));
+    saveToJSON(quiz);
 
     goToQuizesPage();
 }
 
+function saveToJSON(quiz){
+    debugger
+    var writeRequest = new XMLHttpRequest(); 
+	var url = './Quiz.json'; 
+	writeRequest.open('POST', url, true); 
+    writeRequest.send();
+	//writeRequest.setRequestHeader('Content-type', 'application/json'); 
+	writeRequest.onreadystatechange = writing_handler(writeRequest, quiz); 
+	return false; 
+}
+
+function writing_handler(wRqst, data) { 
+    if(wRqst.readyState == 4 && wRqst.status == 200) { 
+        alert("Saving Data To File ..."); 
+        Data = JSON.stringify(data , 0, 4); 
+        console.log('Data: ' + Data); 
+        wRqst.send(Data); 
+    } 
+    else { 
+        alert("Connection FAIL,\nCheck connection and Retry !!!"); 
+        console.log(wRqst); 
+    } 
+}
+
 //go to a page to see his quiz
 function goToQuizesPage(){
-   //window.location.href = "../quiz.html";
+    window.location="../category.html";
 
 } 
+
  
 
 chooseCategory();
