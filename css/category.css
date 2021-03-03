@@ -44,7 +44,7 @@ main {
 }
 .trCategory td:hover{
 
-    background-color: rgba(254,139,10,255);
+    background-color: #e72e69  ;
     transition: ease-in 0.3s;
 
 }

@@ -79,8 +79,10 @@
     
     #fh {
       
-      font-family: 'Luckiest Guy', cursive;
-
+      font-family: 'Luckiest Guy', cursive !important;
+      font-size: x-large !important;
+      font-weight: bold !important;
+      color:rgb(11, 7, 67) !important; 
     }
     
     #lorem {
@@ -105,11 +107,9 @@
     }
     
     .logo {
-      color: rgb(11, 7, 67);
+      
       text-transform: uppercase;
-      letter-spacing: 3px;
-      font-size: 30px;
-      font-weight: bold;
+      
     }
     .nav-links {
       display: flex;
@@ -181,9 +181,9 @@ list-style: none;
     }
     
    footer  {
-      font-family: 'Balsamiq Sans', cursive;
+      font-family: 'Balsamiq Sans', cursive ;
       
-      height: 250px;
+      height: 250px !important;
       background-color:#434343 ; 
       /* background-color: rgba(26, 25, 26, 0.678); */
       text-align: center;
@@ -194,11 +194,11 @@ list-style: none;
     
 
     .footer-content{
-      margin-top: 1%;
+      margin-top: 1% !important;
       }
       
       .footer-content >p{
-        margin-top: 1%;
+        margin-top: 1% !important;
       }
     
     .cont2 , .cont1{

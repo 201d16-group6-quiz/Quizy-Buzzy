@@ -80,16 +80,16 @@ a{
 
 
 
-
+/* 
 footer  {
     height: 250px;
     background-color: #383838;
     text-align: center;
     color: white;
     font-size: large;
-}
+} */
 
-.socials{
+/* .socials{
     display: inline-flex;
     justify-content: space-around;
     width: 30%;
@@ -104,4 +104,12 @@ footer  {
     letter-spacing: 2px;
     font-weight: bold;
     font-size: 15px;
-}
+} */
+
+/* #fh {
+      
+  font-family: 'Luckiest Guy', cursive !important;
+  font-size: x-large !important;
+  font-weight: bold !important;
+  color:rgb(11, 7, 67) !important; 
+} */
