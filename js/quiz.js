@@ -1,4 +1,4 @@
-const arrQuiz = JSON.parse(localStorage.getItem("quizArray") || "[]");
+let arrQuiz = JSON.parse(localStorage.getItem("quizArray") || "[]");
 let quizSection = document.getElementById('quiz');
 let buttonEl = document.createElement("button");
 let liEl = document.createElement('li');
@@ -7,13 +7,15 @@ let arrAnswers = ['','','','',''];
 let points = 0;
 let players =0;
 let arrOrder = ['a-','b-','c-','d-'];
-let noOfChoicesArr = [2];
-let Q$NUMBER = 4;
+let noOfChoicesArr = [4,4,4,4,4];
+let Q$NUMBER = 5;
+let quizID = JSON.parse(localStorage['quizID']);
 //get the question number
-if(localStorage['quiz']){
+if(localStorage['quiz'] && quizID ===30 ){
     let quizObject = JSON.parse(localStorage['quiz']);
     Q$NUMBER = quizObject.arrSimpleMathQuestions.length;
     noOfChoicesArr = quizObject.noOfChoicesArray;
+    arrQuiz = quizObject;
 }
 
 
@@ -94,29 +96,34 @@ buttonEl.addEventListener("click",showResults)
 function showResults(){
 
     let rightAnswer = quizSection.querySelectorAll("li");
+
     let selectedAnswer = quizSection.querySelectorAll(".selected");
-   
- for (let i = 0; i <arrQuiz.arrSimpleAnswers.length; i++) {
     let start = 0;
     let end =0;
-        start = i*Q$NUMBER;
-        end = start+Q$NUMBER;
+    let noOfChoices = 0;
+ for (let i = 0; i <arrQuiz.arrSimpleAnswers.length; i++) {
+
+        start = i*noOfChoices;
+         noOfChoices = noOfChoicesArr[i] ;
+        end = start+noOfChoices; 
+
 for (let y = start; y < end; y++) {
-    if (rightAnswer[y].textContent === arrQuiz.arrSimpleAnswers[i]) {
+    console.log(rightAnswer[y]);
+    console.log(arrQuiz.arrSimpleAnswers[i]);
+
+    if (rightAnswer[y] && rightAnswer[y].textContent == arrQuiz.arrSimpleAnswers[i]) {
         console.log(rightAnswer[y]);
     rightAnswer[y].style.border = '3px solid limegreen';
     rightAnswer[y].style.color = 'limegreen';
     rightAnswer[y].style.backgroundColor = 'rgba(215, 248, 215, 0.787)';
+    
     
 
     if (selectedAnswer[i] === undefined || selectedAnswer[i].textContent !== arrQuiz.arrSimpleAnswers[i]) {
         if ( selectedAnswer[i] !== undefined) {
             selectedAnswer[i].style.border = " 3px solid red";
             selectedAnswer[i].style.color = "red";
-            selectedAnswer[i].style.backgroundColor = '#8b000038';
-            
-            
-            
+            selectedAnswer[i].style.backgroundColor = '#8b000038';   
         }
 
     }
@@ -125,8 +132,13 @@ for (let y = start; y < end; y++) {
         
     }
 }  
+
 }
-  }
+
+//
+
+}
+
   let pEl = document.createElement('p');
   quizSection.appendChild(pEl);
 if (points >=3) {

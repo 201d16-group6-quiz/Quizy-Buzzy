@@ -277,7 +277,8 @@ console.log(quiz.noOfChoicesArray);
 function saveToLocalStorage(){
 
     localStorage.setItem('id',quiz.category);
-
+    localStorage.setItem('quizID',quiz.id);
+    
     localStorage.setItem('quiz',JSON.stringify(quiz));
 
     goToQuizesPage();

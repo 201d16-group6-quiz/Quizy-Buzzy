@@ -12,7 +12,10 @@ let id = localStorage.getItem('id');
 // this function will take the quiz ID and send the user to the quiz page
 table.addEventListener('click',goToQuiz);
 function goToQuiz(event){
- let quizID = event.target.id;
+    let quizID = event.target.id;
+    if(event.target.textContent == 'New user Quiz'){
+        quizID = 30;
+    }
  let quizClass = event.target.className;
  localStorage.setItem("quizID",quizID);
  localStorage.setItem("quizClass",quizClass);
