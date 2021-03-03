@@ -127,3 +127,8 @@ select:hover,button:hover{
 
 
 
+main>section:first-of-type{
+background-image: none;
+}
+
+

@@ -1,9 +1,10 @@
 # Quizy-Buzzy
-website to create and take quizzes 
+
+website to create and take quizzes
 
 **This website is created by:**
 
-- Bayan Aldaoud 
+- Bayan Aldaoud
 
 - Hala Abu Qamar
 
@@ -11,7 +12,7 @@ website to create and take quizzes
 
 - Mohammed alsalty
 
-- Nizar Alsaeed 
+- Nizar Alsaeed
 
 ## What is Quizy-Buzzy?
 
@@ -21,16 +22,12 @@ It's a quiz generating and taking website with an interactive pages to create yo
 
 1. Home
 2. Categories(1-6 pages)
-3. Creating quiz form page 
-4. About the team 
+3. Creating quiz form page
+4. About the team
 5. `Registration`
 
-**The website has these Functions :**
+## Home Page WirFrame-
 
-![use case](img/Quizy-Buzzy-UseCase.png)
-
-## Home Page WirFrame: 
 Here is the main page "home page" wire frame
-
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![wireframe](./img/project-wireframe.png)

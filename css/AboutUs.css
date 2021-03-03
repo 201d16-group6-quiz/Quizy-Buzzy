@@ -9,12 +9,7 @@ ul img{
 
   
   
-    h3{
-        font-size: 40px;
-        margin: 32px auto;
-        justify-content: center;
-        display: flex;
-    }
+    
 
     main{
         margin-top: 10px;
@@ -49,7 +44,7 @@ ul img{
         width: 1200px;
         margin: 0px auto;
         text-align: center;
-        border: white solid 9px;
+        border: #aea1a545 solid 9px;
         padding-bottom: inherit;
 
     }
@@ -58,7 +53,7 @@ ul img{
         font-size: 15px;
         color:rgb(9, 6, 79);
         /* text-align: center; */
-        font-family:"Orbitron", sans-serif; 
+        font-family: 'Playfair Display', serif;
         display: block;
         line-height: 1.6;
         margin-left: 9%;
@@ -75,11 +70,18 @@ ul img{
 
     .collection{
         display: inline-block;
-        margin: 5% 5% 5%;
+        margin: 9%;
+        background-color: #efedfa6b;
+    border-radius: 13px;
+    box-shadow: 1px 1px #00000040;
     }
     .collection1{
         display: inline-block;
-        margin: 15% 15% 15%;
+        margin: 0%;
+    margin-left: 402px;
+        background-color: #efedfa6b;
+    border-radius: 13px;
+    box-shadow: 1px 1px #00000040;
     }
 
   
