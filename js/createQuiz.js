@@ -6,13 +6,18 @@ let noOFChoices =4;
 let counter=0;
 let arrCategory = ['math','science','programming','fun','languages','geography']; //edit later
 
-function Quiz(category='',questionsArr=[],choicesArr=[],answersArr=[]) {
+function Quiz(category='',arrQuestions=[],arrChoices=[],arrAnswers=[], author ='',name='',id=0 ,players =0) {
 this.category = category;
-this.questionsArr = questionsArr;
-this.choicesArr = choicesArr;
-this.answersArr = answersArr;
+this.name = name;
+this.arrQuestions = arrQuestions;
+this.arrChoices = arrChoices;
+this.arrAnswers = arrAnswers;
+this.author= author;
+this.id = id;
+this.players = 0;
 Quiz.all.push(this);
 }
+
 Quiz.all=[];
 
 let quiz = new Quiz
@@ -24,11 +29,22 @@ Quiz.prototype.generatefields = function (){
     questionContainer.className='newQuestion'
     let INPUT= document.createElement('input');
     FORM.appendChild(questionContainer);
+    INPUT.placeholder='Quiz Name';
+    questionContainer.appendChild(INPUT);
+    INPUT.style.display ='block';
+    INPUT.style.width ='fit-content';
+    INPUT.style.margin='0 auto';
+    INPUT.style.paddingRight='23px';
+    INPUT.setAttribute('required','');
+    INPUT.id = 'QuizName';
+
+    INPUT= document.createElement('input');
     questionContainer.appendChild(INPUT);
     questionContainer.appendChild(brk);
 
     
     INPUT.placeholder='your question';
+    INPUT.style.paddingRight='23px';
     INPUT.setAttribute('required','');
 
     for(let i=0; i<noOFChoices; i++){   
@@ -68,21 +84,25 @@ FORM.addEventListener('submit',getValuesandCreateQuiz)
 function getValuesandCreateQuiz(event){
     updateCategorySelection();
     event.preventDefault();
+
     for(let i=0; i<counter; i++){
         const CURRENTQUESTION= FORM.getElementsByClassName('newQuestion')[i];
-        quiz.questionsArr.push(CURRENTQUESTION.firstChild.value);
+        quiz.arrQuestions.push(CURRENTQUESTION.firstChild.value);
 
         for(let j=1;j<CURRENTQUESTION.childNodes.length;j++) {
            if(CURRENTQUESTION.childNodes[j].hasAttribute('placeholder')){
-            quiz.choicesArr.push(CURRENTQUESTION.childNodes[j].value);
+            quiz.arrChoices.push(CURRENTQUESTION.childNodes[j].value);
             if(CURRENTQUESTION.childNodes[j].previousSibling.getAttribute('type')=='radio' && CURRENTQUESTION.childNodes[j].previousSibling.checked){
 
-                quiz.answersArr.push(CURRENTQUESTION.childNodes[j].value);                
+                quiz.arrAnswers.push(CURRENTQUESTION.childNodes[j].value);                
             }
         }
     }
     }
+    generateAutherAndName();
+    generateId() ;
     FORM.reset();
+   
 }
 
 const SELECT = document.createElement('select');
@@ -102,7 +122,31 @@ function updateCategorySelection(){
 }
 
 
+ function generateAutherAndName() {
+     debugger;
+    let userInfo = localStorage.getItem('currentUserId');
+    let user = localStorage.getItem('userInfo');
+    user = JSON.parse(user);
+    userInfo = parseInt(userInfo);
+    console.log(userInfo);
+   
 
+    quiz.author = user[userInfo].name;
+       quiz.name=  document.getElementById('QuizName').value;
+   
+}
+
+
+function generateId()  {
+    debugger;
+    let allQuizzes = localStorage.getItem('allQuizzes');
+    allQuizzes = JSON.parse(allQuizzes);
+    quiz.id = parseInt(allQuizzes[allQuizzes.length-1].id +1);
+    allQuizzes.push(Quiz.all[0]);
+    localStorage.setItem('allQuizzes',allQuizzes);
+}
+
+// generateAuther();
 chooseCategory();
 quiz.generatefields();
 

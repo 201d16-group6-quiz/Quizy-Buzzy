@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/Quizy-Buzzy/Quizy-Buzzy/issues"
   },
-  "homepage": "https://github.com/Quizy-Buzzy/Quizy-Buzzy#readme"
+  "homepage": "https://github.com/Quizy-Buzzy/Quizy-Buzzy#readme",
+  "dependencies": {
+    "astronomia": "^2.3.1"
+  }
 }

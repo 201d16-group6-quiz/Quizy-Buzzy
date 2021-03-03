@@ -14,10 +14,10 @@ function generateQuizQuestion(){
 let h3El = document.createElement('h3');
 let hrEl = document.createElement('hr');
 
-for (let i = 0; i < arrQuiz.arrSimpleMathQuestions.length; i++) {
+for (let i = 0; i < arrQuiz.arrQuestions.length; i++) {
     h3El = document.createElement('h3');
     quizSection.appendChild(h3El);
-    h3El.textContent =i+1 + '- '+ arrQuiz.arrSimpleMathQuestions[i];
+    h3El.textContent =i+1 + '- '+ arrQuiz.arrQuestions[i];
     olEl = document.createElement('ol');
     olEl.id = i;
         quizSection.appendChild(olEl);
@@ -32,7 +32,7 @@ for (let i = 0; i < arrQuiz.arrSimpleMathQuestions.length; i++) {
 
         liEl = document.createElement('li');
         olEl.appendChild(liEl);
-        liEl.textContent =arrQuiz.arrSimpleMathChoices[y];
+        liEl.textContent =arrQuiz.arrChoices[y];
         liEl.style.backgroundColor = 'whitesmoke';
         liEl.id = y;
         
@@ -56,7 +56,7 @@ function addAnswer(event){
 
     if(event.target.tagName.toLowerCase() === 'li'){
     console.log(event.target);
- debugger;
+ 
     event.target.style.backgroundColor = "#b7cad0";
     let currentUl =  event.target.parentNode;
     let allLi = currentUl.children;
@@ -88,20 +88,20 @@ function showResults(){
     let rightAnswer = quizSection.querySelectorAll("li");
     let selectedAnswer = quizSection.querySelectorAll(".selected");
    
- for (let i = 0; i <arrQuiz.arrSimpleAnswers.length; i++) {
+ for (let i = 0; i <arrQuiz.arrAnswers.length; i++) {
     let start = 0;
     let end =0;
         start = i*Q$NUMBER;
         end = start+Q$NUMBER;
 for (let y = start; y < end; y++) {
-    if (rightAnswer[y].textContent === arrQuiz.arrSimpleAnswers[i]) {
+    if (rightAnswer[y].textContent === arrQuiz.arrAnswers[i]) {
         console.log(rightAnswer[y]);
     rightAnswer[y].style.border = '3px solid limegreen';
     rightAnswer[y].style.color = 'limegreen';
     rightAnswer[y].style.backgroundColor = 'rgba(215, 248, 215, 0.787)';
     
 
-    if (selectedAnswer[i] === undefined || selectedAnswer[i].textContent !== arrQuiz.arrSimpleAnswers[i]) {
+    if (selectedAnswer[i] === undefined || selectedAnswer[i].textContent !== arrQuiz.arrAnswers[i]) {
         if ( selectedAnswer[i] !== undefined) {
             selectedAnswer[i].style.border = " 3px solid red";
             selectedAnswer[i].style.color = "red";
@@ -121,11 +121,11 @@ for (let y = start; y < end; y++) {
   }
   let pEl = document.createElement('p');
   quizSection.appendChild(pEl);
-if (points >=3) {
-    pEl.textContent = `good job ! you got ${points} out of 5`;
+if (points >=(arrQuiz.arrQuestions.length/2)) {
+    pEl.textContent = `good job ! you got ${points} out of ${arrQuiz.arrQuestions.length}`;
 }
 else {
-    pEl.textContent = `hard luck ! you got ${points} out of 5`;
+    pEl.textContent = `hard luck ! you got ${points} out of ${arrQuiz.arrQuestions.length}`;
 }
  players ++;
   buttonEl.disabled = true;

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html >
 <head>
-
+  <meta charset="UTF-8">
     <title>Quizy Buzzy</title>
     <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Luckiest+Guy&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -101,17 +101,17 @@
           <div id="id01" class="modal">
             <form class="modal-content" >
               <div class="container">
-                <h1  class="h1Sign">Sign Up</h1>
+                <h1  class="h1Sign">Sign In</h1>
                 <span class='vl'></span>
                 <p id="pSign" >new account? </p> 
                 <h1 class="h1Sign1">Sign Up</h1>
                 <hr>
                 <label for="email"><b>Email</b></label>
-                <input type="text" placeholder="Enter Email" name="email" required>
+                <input type="text" placeholder="Enter Email" name="email" id="email" required>
           
                 <label for="psw"><b>Password</b></label>
-                <input type="password" placeholder="Enter Password" name="psw" required>
-          
+                <input type="password" placeholder="Enter Password" name="psw" id="password" required>
+                  <p id="message"> The Email or Password are incorrect</p>
                 <div class="clearfix">
                   <button type="submit" class="signin">Sign In</button>
                 </div>

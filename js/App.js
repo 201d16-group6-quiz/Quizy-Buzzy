@@ -4,7 +4,7 @@ let imagesLi = document.getElementById('categoryContainer');
  dropdown.addEventListener('click',redirectToCategory);
 function redirectToCategory(event){
     // id = '';
-    debugger;
+    
     if(event.target.tagName.toLowerCase() === 'img' || event.target.tagName.toLowerCase() === 'a'){
     let id = event.target.id;
    

@@ -1,13 +1,52 @@
 'use strict'
 let btnSignUp = document.getElementById('signup');
 let btnSignIn = document.getElementsByClassName('signin')[0];
-let elements = document.getElementById("signUpForm").elements;
+// let elements = document.getElementById("signUpForm").elements;
 let btnHome = document.getElementById("redirectToHome");
 let h1SignIn = document.getElementsByClassName("h1Sign2")[0];
 let h1SignUp = document.getElementsByClassName("h1Sign1")[0];
-let userName = localStorage.getItem('userName');
+// let userName = localStorage.getItem('userName');
 let btnShowSignIn = document.getElementById("signIn");
 let btnShowSignUp = document.getElementById("signUp");
+let passwordCheck = document.getElementById("password");
+let emailCheck = document.getElementById("email");
+let currentUser =[];
+let wrongMessage = document.getElementById("message");
+btnSignIn.addEventListener('click',signIn);
+
+function signIn(event) {
+   event.preventDefault();
+   debugger;
+   // let check = localStorage.getItem('userInfo');
+   let correct = false;
+for (let i = 0; i < User.all.length; i++) {
+   
+   if (emailCheck.value === User.all[i].email) {
+      
+      if (passwordCheck.value === User.all[i].password) {
+
+         // currentUser.push(User.all[i].name);
+         // currentUser.push(emailCheck.value);
+         localStorage.setItem('currentUserId',i);
+         correct = true;
+         window.location = '../profile.html';
+         break;
+      }
+
+   }
+
+   if (correct === false) {
+
+      wrongMessage.style.display = 'block';
+      
+   }
+
+
+   
+}
+}
+
+
 
 btnHome.addEventListener('click',redirectToHome);
 let signUpCounter ;
@@ -54,7 +93,10 @@ function redirectToHome(event){
    event.preventDefault();
    window.location = "../index.html";
 }
-   class User {
+
+
+
+  class User {
    constructor(Id , name, password, email) {
       this.Id = Id;
       this.arrUserQuizzes = [];
@@ -63,13 +105,9 @@ function redirectToHome(event){
       this.email = email;
       User.all.push(this);
    }
-   getherUserInformation() {
+     getherUserInformation() {
       
-      if (localStorage.getItem("userInfo") !== null) {
-         User.all  = localStorage.getItem('userInfo');
-         User.all = JSON.parse(User.all);
-         console.log(User.all);
-      }
+     
       let error = document.getElementById('error');
       let newUserName = document.getElementById('newUserName');
       let newEmail = document.getElementById('newEmail');
@@ -102,7 +140,6 @@ function redirectToHome(event){
       user.Id = signUpCounter;
       user.password = PASSWORD.value;
       user.email = newEmail.value;
-      // User.all.push(user);
       console.log(user.all);
       User.all.push(user);
       signUpCounter += 1;
@@ -119,7 +156,6 @@ function redirectToHome(event){
 
 
 
-
     btnSignUp.addEventListener('click',handelEvent);
     
 
@@ -128,9 +164,12 @@ function redirectToHome(event){
       user.getherUserInformation();
     }
 
-  
-
-
-
-
-  
+      function userInfo() {
+      if (localStorage.getItem("userInfo") !== null) {
+         User.all  = localStorage.getItem('userInfo');
+         User.all = JSON.parse(User.all);
+         return User.all;
+      }
+    }
+    userInfo();
+   

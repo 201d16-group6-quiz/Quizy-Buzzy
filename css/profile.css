@@ -65,3 +65,51 @@ body{
 .tab-content.current{
   display: inherit;
 }
+
+
+.column {
+  float: left;
+  width: 25%;
+  padding: 0 10px;
+}
+
+#quizzesList {margin: 50px -5px 10px -5px;}
+
+#quizzesList:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+
+  .column {
+    width: 33%;
+    display: inline-block;
+    margin-bottom: 20px;
+  }
+
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  padding: 16px;
+  text-align: center;
+  background-color: #f1f1f1;
+}
+
+section p {
+  width: auto;
+}
+
+footer{
+  clear: both;
+}
+
+main{
+  height: 1000px;
+}
+
+#Basic-detail:first-child{
+  text-align: center;
+ margin-top: 30px;
+ text-transform:uppercase;
+}
