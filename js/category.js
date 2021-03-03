@@ -116,8 +116,9 @@ for (let i = 0; i < arrCategory.length; i++) {
 
 
 function renderNewQuiz(){
-
+    if(localStorage['quiz']){
     let dataFromlocalStorage = JSON.parse(localStorage['quiz']);
     console.log(dataFromlocalStorage)
     arrObjectToArray.push(dataFromlocalStorage)
+    }
 }

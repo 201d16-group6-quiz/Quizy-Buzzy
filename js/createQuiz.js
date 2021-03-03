@@ -11,13 +11,14 @@ let noOFChoices =2;
 let counter=0;
 let arrCategory = ['math','science','programming','fun','languages','geography']; //edit later
 
-function Quiz(category='',questionsArr=[],choicesArr=[],answersArr=[]) {
+function Quiz(category='',arrSimpleMathQuestions=[],arrSimpleMathChoices=[],arrSimpleAnswers=[],noOfChoicesArray=[]) {
 this.category = category;
 this.id=30;
 this.name='New user Quiz';
-this.questionsArr = questionsArr;
-this.choicesArr = choicesArr;
-this.answersArr = answersArr;
+this.arrSimpleMathQuestions = arrSimpleMathQuestions;
+this.arrSimpleMathChoices = arrSimpleMathChoices;
+this.arrSimpleAnswers = arrSimpleAnswers;
+this.noOfChoicesArray = noOfChoicesArray;
 Quiz.all.push(this);
 }
 Quiz.all=[];
@@ -191,16 +192,16 @@ FORM.addEventListener('submit',formValidate)
     // question value
     for(let i=0; i<qList.length; i++){
         const CURRENTQUESTION= qList[i];
-        quiz.questionsArr.push(CURRENTQUESTION.firstChild.value);
-        console.log(quiz.questionsArr)
+        quiz.arrSimpleMathQuestions.push(CURRENTQUESTION.firstChild.value);
+        console.log(quiz.arrSimpleMathQuestions)
     let choiceList= CURRENTQUESTION.querySelector('ul').childNodes;  //li elements as choices
         for(let j=0;j<choiceList.length;j++) {
             // the input choice is the last of each li element
-            quiz.choicesArr.push(choiceList[j].lastElementChild.value);
-            console.log(quiz.choicesArr);
+            quiz.arrSimpleMathChoices.push(choiceList[j].lastElementChild.value);
+            console.log(quiz.arrSimpleMathChoices);
             if(choiceList[j].firstChild.checked){ // the input radio is the first of each li element
-                quiz.answersArr.push(choiceList[j].lastElementChild.value);  
-                console.log(quiz.answersArr)              
+                quiz.arrSimpleAnswers.push(choiceList[j].lastElementChild.value);  
+                console.log(quiz.arrSimpleAnswers)              
             }
         
     }
@@ -236,6 +237,11 @@ function chooseCategory (){
 
 function updateCategorySelection(){
     quiz.category=SELECT.value;
+    let allQ = FORM.querySelectorAll('.newQuestion')
+    for(let i=0;i<allQ.length;i++){
+        quiz.noOfChoicesArray.push(allQ[i].querySelector('ul').childNodes.length);
+    }
+console.log(quiz.noOfChoicesArray);
 }
 
  function formValidate(event){
@@ -273,34 +279,10 @@ function saveToLocalStorage(){
     localStorage.setItem('id',quiz.category);
 
     localStorage.setItem('quiz',JSON.stringify(quiz));
-    saveToJSON(quiz);
 
     goToQuizesPage();
 }
 
-function saveToJSON(quiz){
-    debugger
-    var writeRequest = new XMLHttpRequest(); 
-	var url = './Quiz.json'; 
-	writeRequest.open('POST', url, true); 
-    writeRequest.send();
-	//writeRequest.setRequestHeader('Content-type', 'application/json'); 
-	writeRequest.onreadystatechange = writing_handler(writeRequest, quiz); 
-	return false; 
-}
-
-function writing_handler(wRqst, data) { 
-    if(wRqst.readyState == 4 && wRqst.status == 200) { 
-        alert("Saving Data To File ..."); 
-        Data = JSON.stringify(data , 0, 4); 
-        console.log('Data: ' + Data); 
-        wRqst.send(Data); 
-    } 
-    else { 
-        alert("Connection FAIL,\nCheck connection and Retry !!!"); 
-        console.log(wRqst); 
-    } 
-}
 
 //go to a page to see his quiz
 function goToQuizesPage(){
