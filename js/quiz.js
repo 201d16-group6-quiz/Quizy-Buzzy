@@ -7,7 +7,18 @@ let arrAnswers = ['','','','',''];
 let points = 0;
 let players =0;
 let arrOrder = ['a-','b-','c-','d-'];
-const Q$NUMBER = 4;
+let noOfChoicesArr = [2];
+let Q$NUMBER = 4;
+//get the question number
+if(localStorage['quiz']){
+    let quizObject = JSON.parse(localStorage['quiz']);
+    Q$NUMBER = quizObject.arrSimpleMathQuestions.length;
+    noOfChoicesArr = quizObject.noOfChoicesArray;
+}
+
+
+
+
 // show quiz question on the page
 function generateQuizQuestion(){
 
@@ -23,21 +34,19 @@ for (let i = 0; i < arrQuiz.arrSimpleMathQuestions.length; i++) {
         quizSection.appendChild(olEl);
         hrEl = document.createElement('hr');
         olEl.appendChild(hrEl);
-        let start = 0;
-        let end =0;
-        start = i*Q$NUMBER;
-        end = start+Q$NUMBER;
-        let countOrder = 0;
-    for (let y = start; y < end; y++) {
+        let noOfChoices = noOfChoicesArr[i] ;
+
+
+    for (let y = 0; y < noOfChoices; y++) {
 
         liEl = document.createElement('li');
         olEl.appendChild(liEl);
         liEl.textContent =arrQuiz.arrSimpleMathChoices[y];
         liEl.style.backgroundColor = 'whitesmoke';
-        liEl.id = y;
-        
-        
+        liEl.id = y;        
     }
+    arrQuiz.arrSimpleMathChoices.splice(0,noOfChoices);
+
 
 
 }
@@ -56,7 +65,6 @@ function addAnswer(event){
 
     if(event.target.tagName.toLowerCase() === 'li'){
     console.log(event.target);
- debugger;
     event.target.style.backgroundColor = "#b7cad0";
     let currentUl =  event.target.parentNode;
     let allLi = currentUl.children;
@@ -122,10 +130,10 @@ for (let y = start; y < end; y++) {
   let pEl = document.createElement('p');
   quizSection.appendChild(pEl);
 if (points >=3) {
-    pEl.textContent = `good job ! you got ${points} out of 5`;
+    pEl.textContent = `good job ! you got ${points} out of ${Q$NUMBER}`;
 }
 else {
-    pEl.textContent = `hard luck ! you got ${points} out of 5`;
+    pEl.textContent = `hard luck ! you got ${points} out of ${Q$NUMBER}`;
 }
  players ++;
   buttonEl.disabled = true;
