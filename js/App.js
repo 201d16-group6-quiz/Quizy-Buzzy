@@ -9,7 +9,7 @@ function redirectToCategory(event){
     let id = event.target.id;
    
     localStorage.setItem('id',id);
-    window.location="../category.html";
+    window.location="./category.html";
     }   
 
     else if (event.target.tagName.toLowerCase() === 'p') {
