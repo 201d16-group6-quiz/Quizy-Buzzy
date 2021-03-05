@@ -21,7 +21,7 @@ function goToQuiz(event){
  localStorage.setItem("quizID",quizID);
  localStorage.setItem("quizClass",quizClass);
  localStorage.setItem("quizArray", JSON.stringify(arrObjectToArray[quizID]));
- window.location.href = "../quiz.html";
+ window.location.href = "./quiz.html";
 }
 
 // take the arrays of questions and answers from Json file and assign them in variable "quiz"
