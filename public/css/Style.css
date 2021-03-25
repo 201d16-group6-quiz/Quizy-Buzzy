@@ -1,0 +1,272 @@
+
+
+  
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+   
+  .dropbtn {
+    background-color: transparent;
+    color: rgb(255, 255, 255);
+    padding: 16px;
+    /* font-size: 18px; */
+    letter-spacing: 2px;
+    font-weight: bold;
+    font-size: 17px;
+    border: none;
+    font-family: 'Balsamiq Sans', cursive;
+    /* font-family: "Orbitron", sans-serif; */
+  }
+  a:visited{
+    color: rgb(250, 250, 250);
+}
+
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+  
+  .dropdown-content a {
+    color: rgb(21, 12, 105) !important ;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+
+  .dropdown-content a:hover {background-color: rgba(255, 4, 171, 0.548);}
+
+.dropdown:hover .dropdown-content {display: block;}
+
+.dropdown:hover .dropbtn:hover {background-color: #b97eae38;}
+    
+  
+  *{
+    box-sizing: border-box;
+    
+    }
+    
+    header {
+    
+      background-color: #e72e68;
+    
+    }
+    
+    main{
+      background-color: #f4f4fdb0;
+     
+      padding-bottom: 5%;
+      /* border-bottom: 10px solid rgb(255, 255, 255); */
+    }
+    
+  
+    main>section:first-of-type{
+      background-image: url('../img/quiz2.jpg');
+    background-size: cover;
+    height: 700px;
+    
+    }
+    
+    #fh {
+      
+      font-family: 'Luckiest Guy', cursive !important;
+      font-size: x-large !important;
+      font-weight: bold !important;
+      color:rgb(11, 7, 67) !important; 
+    }
+    
+    #lorem {
+      font-family: 'Balsamiq Sans', cursive;
+      color:rgb(11, 7, 67) ; 
+      font-size:30px;
+      line-height: 1.3;
+      margin: 15%;
+    }
+    
+    
+    
+    
+    /* nav style */
+    nav {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      min-height: 8vh;
+      font-size: 20px;
+      height: 60px;
+    }
+    
+    .logo {
+      
+      text-transform: uppercase;
+      
+    }
+    .nav-links {
+      display: flex;
+      justify-content: space-around;
+      width: 40%;
+    }
+    .nav-links li {
+      list-style: none;
+    }
+    .nav-links a {
+      color: rgb(255, 255, 255);
+      text-decoration: none;
+      letter-spacing: 2px;
+      font-weight: bold;
+      font-size: 17px;
+    }
+    
+    .nav-links button:hover {
+      color: #5bc5dd;
+    }
+    .nav-links a:hover {
+      color: #5bc5dd;
+    }
+
+    
+    /* main img style */
+    
+    
+    /* text style */
+    section p {
+      width: 500px;
+    }
+    
+    /* the image next to text */
+    #img2-ul {
+    
+      margin-top: 10px;
+      /* border-bottom: 10px solid rgb(250, 250, 250); */
+      display: flex;
+    }
+    li{
+list-style: none;
+
+    }
+    .img2-li {
+      width: 400px;
+      margin-left: 280px;
+      margin-bottom: 50px;
+      list-style: none;
+      margin-top: 4%;
+    }
+    
+    .socials{
+      display: inline-flex;
+      justify-content: space-around;
+      width: 30%;
+      
+    }
+    .socials li{
+      list-style: none;
+    }
+    .socials a{
+      color: rgba(142, 170, 223, 0.747);
+      text-decoration: none;
+      letter-spacing: 2px;
+      font-weight: bold;
+      font-size: 15px;
+
+    }
+    
+   footer  {
+      font-family: 'Balsamiq Sans', cursive ;
+      
+      height: 250px !important;
+      background-color:#434343 ; 
+      /* background-color: rgba(26, 25, 26, 0.678); */
+      text-align: center;
+      color: rgba(250, 244, 250, 0.671);
+      font-size: 15px;
+    
+    }
+    
+
+    .footer-content{
+      margin-top: 1% !important;
+      }
+      
+      .footer-content >p{
+        margin-top: 1% !important;
+      }
+    
+    .cont2 , .cont1{
+     display: flex;
+     margin:  0 auto;
+     width: max-content;
+    }
+    
+    .cont2 img , .cont1 img{
+      height: 350px;
+     width: 350px;
+     padding: 40px;
+     
+    }
+    
+    #categoryContainer h3{
+      font-size: 500%;
+     
+      font-family: 'Balsamiq Sans', cursive;
+      margin-top: 10px;
+      color: rgb(11, 7, 67);
+       text-align: center;
+       font-weight: bold;
+       /* font-size: 40px; */
+      
+    }
+    
+    #math:hover,#languages:hover,#science:hover, #fun:hover, #programming:hover, #geography:hover{
+     opacity: 0.5;
+     cursor: pointer;
+    transition: 0.3s;
+    }
+    
+      .container {
+        position: relative;
+        width: 50%;
+        cursor: pointer;
+      }
+
+  
+#lan,#sci,#prog,#f,#mathi,#geo{
+  
+    width: 100%;
+    color: rgb(11, 7, 67); 
+    
+    font-family: 'Balsamiq Sans', cursive;
+   background: transparent; 
+   padding: 20px;  
+   margin: 0 auto;
+   font-size: 30px;
+ 
+
+}
+
+
+#lan:hover,#sci:hover,#prog:hover,#f:hover,#mathi:hover,#geo:hover{
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+#f,#mathi{
+  margin: 0 32%;
+}
+#lan,#prog,#geo{
+  margin: 0 15%;
+
+}
+#sci{
+  margin:0 25%;
+}
+

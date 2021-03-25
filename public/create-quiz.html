@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans&family=Fascinate&family=Luckiest+Guy&display=swap" rel="stylesheet">
+<!--     <link rel="stylesheet" href="./css/reset.css"> 
+    <link rel="stylesheet" href="./css/default.css"> -->
+<link rel="stylesheet" href="./css/Style.css">
+    <!-- <link rel="stylesheet" href="./css/general.css"> -->
+    <link rel="stylesheet" href="./css/create-quiz.css">
+    
+    <title>Document</title>
+</head>
+<body>
+    <header >
+        <nav>
+            <div class="logo">
+                <h2 id="fh">Quizy Buzzy</h2>
+            </div>
+            <ul class="nav-links">
+                <button class="dropbtn"> <a href="./index.html">Home</a></button>
+                
+              
+                
+              
+               
+               
+               
+               
+                <div class="dropdown">
+                    <button class="dropbtn">Categories</button>
+                    <div class="dropdown-content" id="redirectToCategory">
+                      <a id="math" href="#">Math</a>
+                      <a id="science" href="#">Science</a>
+                      <a id="languages" href="#">Language</a>
+                      <a id="fun" href="#">Fun</a>
+                      <a id="geography" href="#">Geography</a>
+                      <a id="programming" href="#">Programming</a>
+                      
+                    </div>
+                  </div>
+            
+            
+            
+            
+            
+            
+            
+                  <button class="dropbtn"><a href="./aboutus.html">About us</a></button>
+                  <button class="dropbtn"><a href="./create-quiz.html">create quiz</a></button>
+
+                  
+            </ul>
+        </nav>
+
+    </header>
+    <main>
+        <section id="createQuiz">
+            <form id="quizForm">
+
+                <input type="submit" value="Create Quiz" id="submit">
+
+            </form>
+        </section>
+    
+    </main>
+   
+    <span id = "categoryContainer"> </span>
+    <script src ="./js/App.js"></script>
+    <script src="./js/createQuiz.js"></script>
+</body>
+</html>
