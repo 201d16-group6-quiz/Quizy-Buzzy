@@ -156,7 +156,7 @@ function createNewQuestion(){
 
     let dragBtn = document.createElement('img');
     questionContainer.appendChild(dragBtn);
-    dragBtn.src='img/drag.png';
+    dragBtn.src='https://cdn.imgbin.com/18/19/18/imgbin-computer-mouse-pointer-cursor-drag-and-drop-computer-icons-computer-mouse-b1thJ2hvF2QjvSaqDBrxdg1KD.jpg';
     dragBtn.id='dragBtn';
     dragBtn.draggable='true';
 
