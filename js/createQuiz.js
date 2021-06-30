@@ -156,7 +156,7 @@ function createNewQuestion(){
 
     let dragBtn = document.createElement('img');
     questionContainer.appendChild(dragBtn);
-    dragBtn.src='../img/drag.png';
+    dragBtn.src='img/drag.png';
     dragBtn.id='dragBtn';
     dragBtn.draggable='true';
 
